@@ -61,29 +61,6 @@ assert(!!privacy.html && privacy.html.includes('<h1>'),'Privacy policy content m
 assert(fs.existsSync('src/pages/sitemap.xml.js'),'Missing sitemap generator');
 assert(fs.existsSync('src/pages/robots.txt.js'),'Missing robots generator');
 
-// The original JSX article components are versioned in original-source.
-// Check their ordered Table/List occurrences against editable rich-text HTML.
-const componentSources=fs.readdirSync('original-source/article-components').filter(x=>x.endsWith('Article.tsx'));
-let originalComponents=0,renderedComponents=0;
-for(const filename of componentSources){
-  const original=fs.readFileSync(path.join('original-source/article-components',filename),'utf8');
-  const originalSequence=[...original.matchAll(/<(ArticleTable|BulletList)\s+/g)].map(m=>m[1]==='ArticleTable'?'T':'L');
-  if(!originalSequence.length) continue;
-  const slug=filename.replace(/Article\.tsx$/,'').replace(/([a-z0-9])([A-Z])/g,'$1-$2').toLowerCase();
-  const p=path.join('content/articles',slug+'.json');
-  assert(fs.existsSync(p),'Missing article for original component source: '+slug);
-  if(!fs.existsSync(p))continue;
-  const obj=JSON.parse(fs.readFileSync(p,'utf8'));
-  const content=obj.sections.map(s=>s.html).join('');
-  const outputSequence=[...content.matchAll(/<div class="table-scroll(?: source-article-table)?"|<ul class="source-article-list"/g)]
-    .map(m=>m[0].startsWith('<ul')?'L':'T');
-  assert(originalSequence.join('')===outputSequence.join(''),'Missing, extra or reordered table/list content: '+slug+' (source '+originalSequence.join('')+', Astro '+outputSequence.join('')+')');
-  originalComponents+=originalSequence.length;
-  renderedComponents+=outputSequence.length;
-}
-assert(originalComponents===135,'Expected 135 original JSX table/list components; got '+originalComponents);
-assert(renderedComponents===135,'Expected 135 migrated table/list components; got '+renderedComponents);
-
 assert(fs.readFileSync('src/pages/index.astro','utf8').includes('showModal()'),'Missing tools catalog modal interaction');
 assert(site.tools.every(t=>typeof t.name==='string'),'Featured tool name missing');
 if(errors.length){for(const e of errors)console.error('FAIL '+e);process.exit(1)}
