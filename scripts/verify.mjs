@@ -62,6 +62,22 @@ assert(!!privacy.html && privacy.html.includes('<h1>'),'Privacy policy content m
 assert(fs.existsSync('src/pages/sitemap.xml.js'),'Missing sitemap generator');
 assert(fs.existsSync('src/pages/robots.txt.js'),'Missing robots generator');
 
+
+// Regression guard for public purchase/signup CTAs after payment-subdomain migration.
+// Only check published page templates and CMS content, not archived original-source files.
+const forbiddenCheckout=/(?:members\.buyseo\.org|seogroupsbuy\.com\/users\/cart|seogroupsbuy\.com\/users\/signup)/i;
+const publicFiles=['content/site.json','content/privacy.json','src/pages/index.astro','src/pages/[slug].astro','src/layouts/Base.astro'];
+for(const file of files) publicFiles.push('content/articles/'+file);
+for(const file of publicFiles){
+ assert(!forbiddenCheckout.test(fs.readFileSync(file,'utf8')),'Legacy purchase/signup destination remains: '+file);
+}
+const layoutSource=fs.readFileSync('src/layouts/Base.astro','utf8');
+const homeSource=fs.readFileSync('src/pages/index.astro','utf8');
+assert(layoutSource.includes('href={site.paymentBaseUrl}'),'Header Get Started must use the payment subdomain');
+assert(homeSource.includes('href={p.buyUrl}'),'Every plan CTA must use its editable buyUrl');
+assert(site.plans.every(plan=>plan.buyUrl===site.paymentBaseUrl),'All plan CTAs must match payment homepage');
+assert(site.primaryCtaUrl==='/#pricing','Hero View Plans should navigate to pricing, not payment');
+
 assert(fs.readFileSync('src/pages/index.astro','utf8').includes('showModal()'),'Missing tools catalog modal interaction');
 assert(site.tools.every(t=>typeof t.name==='string'),'Featured tool name missing');
 if(errors.length){for(const e of errors)console.error('FAIL '+e);process.exit(1)}
