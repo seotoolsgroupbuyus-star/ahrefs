@@ -29,7 +29,7 @@ Date: 2026-11-25 (Pakistan time).
 ## What is NOT yet confirmed as exact
 
 1. **Pixel-perfect visual parity:** The original React/motion transitions, pricing card styling, tool logo treatments, all responsive states and animation effects have not been verified side by side in a deployed Astro preview.
-2. **Word-by-word article parity:** The 34 JSX originals were converted to HTML sections. The migration report has per-article token/word estimates, which are not proof of literal text identity, particularly for JSX dynamic output, tables and interactive components.
+2. **Article word-order parity (verified):** The 34 source JSX articles now match Astro for 2,218 normalized paragraph texts, 1,295 headings, 27 figure captions and order, 110 tables (1,497 cells), and 125 lists (569 items). See `CONTENT-POSITION-PARITY-AUDIT.md`. This is not byte-exact JSX/HTML or pixel-perfect animation parity.
 3. **External services and business claims:** Review counts, uptime, customer counts, discount claims and checkout/payment options were copied from source, not independently validated. The original checkout URLs point at `members.buyseo.org`; they were not silently changed.
 4. **Live HTTP checks:** The old website's `/robots.txt`, `/sitemap.xml`, individual article responses, redirects and live headers could not all be retrieved through the available web crawler. Live production remains untouched.
 5. **Images on homepage:** The original React site loads tool logos from third-party icon/favicons URLs. The Astro homepage now uses the original Simple Icons CDN lookup for featured tool logos. Actual network/image fallback behavior still requires browser testing.
