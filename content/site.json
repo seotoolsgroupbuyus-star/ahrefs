@@ -255,35 +255,43 @@
   "tools": [
     {
       "name": "Ahrefs",
-      "color": "bg-blue-50"
+      "color": "bg-blue-50",
+      "logo": ""
     },
     {
       "name": "SEMrush",
-      "color": "bg-orange-50"
+      "color": "bg-orange-50",
+      "logo": ""
     },
     {
       "name": "Canva Pro",
-      "color": "bg-teal-50"
+      "color": "bg-teal-50",
+      "logo": ""
     },
     {
       "name": "Grammarly",
-      "color": "bg-green-50"
+      "color": "bg-green-50",
+      "logo": ""
     },
     {
       "name": "Moz Pro",
-      "color": "bg-blue-50"
+      "color": "bg-blue-50",
+      "logo": ""
     },
     {
       "name": "SpyFu",
-      "color": "bg-indigo-50"
+      "color": "bg-indigo-50",
+      "logo": ""
     },
     {
       "name": "Ubersuggest",
-      "color": "bg-orange-50"
+      "color": "bg-orange-50",
+      "logo": ""
     },
     {
       "name": "Envato",
-      "color": "bg-lime-50"
+      "color": "bg-lime-50",
+      "logo": ""
     }
   ],
   "limitations": [
@@ -574,6 +582,12 @@
     "articleAsideButton": "View pricing",
     "relatedReadingTitle": "Related reading",
     "headerButton": "Get Started",
-    "footerSupportLabel": "WhatsApp Support"
+    "footerSupportLabel": "WhatsApp Support",
+    "viewAllTools": "View All Tools",
+    "allToolsTitle": "All Included Tools",
+    "allToolsDescription": "Explore the tools included with our premium bundle.",
+    "closeModal": "Close",
+    "comparisonFeatureHeader": "Feature",
+    "whatsappSupport": "WhatsApp support"
   }
 }
