@@ -8,6 +8,7 @@ const schema={'@context':'https://schema.org','@type':'WebSite',name:site.brand,
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>{title}</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/>
+{site.seoKeywords?.length>0&&<meta name="keywords" content={site.seoKeywords.join(', ')}/>}
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>{site.googleSiteVerification&&<meta name="google-site-verification" content={site.googleSiteVerification}/>}
 <meta property="og:type" content={type}/><meta property="og:site_name" content={site.brand}/><meta property="og:locale" content="en_US"/><meta property="og:url" content={canonical}/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:image" content={absolute(image)}/>
 <meta name="twitter:card" content="summary_large_image"/><meta name="publisher" content={site.brand}/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/>
