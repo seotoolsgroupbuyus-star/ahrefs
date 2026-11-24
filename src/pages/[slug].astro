@@ -1,10 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
-import {articles} from '../lib/data.js';
+import {articles,site} from '../lib/data.js';
 export function getStaticPaths(){return articles.map(article=>({params:{slug:article.slug},props:{article}}))}
 const {article}=Astro.props;
 const siblings=articles.filter(a=>a.cluster===article.cluster&&a.slug!==article.slug).slice(0,8);
-const origin='https://aherfsgroupbuy.com';
+const origin=site.siteUrl.replace(/\/$/,'');
 const canonical=origin+'/'+article.slug+'/';
 const parent=articles.find(a=>a.slug===article.parentSlug);
 const breadcrumbs=[
@@ -14,11 +14,11 @@ const breadcrumbs=[
 ];
 const structuredData=[
  {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:breadcrumbs},
- {'@context':'https://schema.org','@type':article.isPillar?'WebPage':'Article',headline:article.title,description:article.seoDescription,url:canonical,inLanguage:'en',publisher:{'@type':'Organization',name:'AhrefsGroupBuy',url:origin}}
+ {'@context':'https://schema.org','@type':article.isPillar?'WebPage':'Article',headline:article.title,description:article.seoDescription,url:canonical,inLanguage:'en',publisher:{'@type':'Organization',name:site.brand,url:origin}}
 ];
 ---
 <Base title={article.seoTitle} description={article.seoDescription} pathname={'/'+article.slug+'/'} type="article" structuredData={structuredData}>
-<section class="article-hero"><div class="container"><p class="eyebrow">{article.cluster} · Ahrefs knowledge base</p><h1>{article.title}</h1><p>{article.seoDescription}</p></div></section>
-<div class="container article-shell"><aside class="article-toc"><h2>On this page</h2>{article.sections.map((s,i)=><a href={'#section-'+i}>{s.heading}</a>)}</aside><article class="article-content">{article.sections.map((s,i)=><section id={'section-'+i}><h2>{s.heading}</h2><div class="rich" set:html={s.html}/></section>)}</article><aside class="article-aside"><div class="help-card"><h3>Explore your options</h3><p>Compare plans, features and usage restrictions before deciding.</p><a class="btn" href="/#pricing">View pricing</a></div></aside></div>
-<section class="container section"><h2>Related reading</h2><div class="cards">{siblings.map(a=><article class="card"><h3><a href={'/'+a.slug+'/'}>{a.title}</a></h3><p>{a.seoDescription}</p></article>)}</div></section>
+<section class="article-hero"><div class="container"><p class="eyebrow">{article.cluster} · {site.uiLabels.articleCategorySuffix}</p><h1>{article.title}</h1><p>{article.seoDescription}</p></div></section>
+<div class="container article-shell"><aside class="article-toc"><h2>{site.uiLabels.tableOfContentsTitle}</h2>{article.sections.map((s,i)=><a href={'#section-'+i}>{s.heading}</a>)}</aside><article class="article-content">{article.sections.map((s,i)=><section id={'section-'+i}><h2>{s.heading}</h2><div class="rich" set:html={s.html}/></section>)}</article><aside class="article-aside"><div class="help-card"><h3>{site.uiLabels.articleAsideTitle}</h3><p>{site.uiLabels.articleAsideDescription}</p><a class="btn" href="/#pricing">{site.uiLabels.articleAsideButton}</a></div></aside></div>
+<section class="container section"><h2>{site.uiLabels.relatedReadingTitle}</h2><div class="cards">{siblings.map(a=><article class="card"><h3><a href={'/'+a.slug+'/'}>{a.title}</a></h3><p>{a.seoDescription}</p></article>)}</div></section>
 </Base>
