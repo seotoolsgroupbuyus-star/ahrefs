@@ -67,9 +67,9 @@ const componentSources=fs.readdirSync('original-source/article-components').filt
 let originalComponents=0,renderedComponents=0;
 for(const filename of componentSources){
   const original=fs.readFileSync(path.join('original-source/article-components',filename),'utf8');
-  const originalSequence=[...original.matchAll(/<(ArticleTable|BulletList)\\s+/g)].map(m=>m[1]==='ArticleTable'?'T':'L');
+  const originalSequence=[...original.matchAll(/<(ArticleTable|BulletList)\s+/g)].map(m=>m[1]==='ArticleTable'?'T':'L');
   if(!originalSequence.length) continue;
-  const slug=filename.replace(/Article\\.tsx$/,'').replace(/([a-z0-9])([A-Z])/g,'$1-$2').toLowerCase();
+  const slug=filename.replace(/Article\.tsx$/,'').replace(/([a-z0-9])([A-Z])/g,'$1-$2').toLowerCase();
   const p=path.join('content/articles',slug+'.json');
   assert(fs.existsSync(p),'Missing article for original component source: '+slug);
   if(!fs.existsSync(p))continue;
