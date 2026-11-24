@@ -46,6 +46,16 @@ for(const menu of [...(site.menu||[]),...(site.footerMenu||[])]){
   assert(slugs.has(slug)||slug==='privacy','Unknown navigation destination: '+menu.url);
  }
 }
+// Confirm every shared label is exposed in Pages CMS and used by a rendered Astro template.
+const cmsConfig=fs.readFileSync('.pages.yml','utf8');
+const renderedTemplates=['src/pages/index.astro','src/pages/[slug].astro','src/layouts/Base.astro']
+ .map(f=>fs.readFileSync(f,'utf8')).join('\n');
+assert(cmsConfig.includes('name: uiLabels'),'CMS shared interface-label object missing');
+for(const [key,value] of Object.entries(site.uiLabels||{})){
+ assert(cmsConfig.includes('name: '+key+','),'UI label missing from Pages CMS: '+key);
+ assert(renderedTemplates.includes('site.uiLabels.'+key),'UI label not rendered: '+key);
+ assert(Array.isArray(value)?value.length>0:typeof value==='string'&&value.trim().length>0,'Empty UI label: '+key);
+}
 assert(!privacy.html.includes('has not yet been migrated'),'Privacy placeholder remains');
 assert((privacy.html.match(/<h2>/g)||[]).length===10,'Privacy policy missing source sections');
 assert(fs.existsSync('src/pages/sitemap.xml.js'),'Missing sitemap generator');
