@@ -82,6 +82,7 @@ content:
           - { name: updatedLabel, type: string }
           - { name: bylineLabel, type: string }
       - { name: siteUrl, type: string }
+      - { name: paymentBaseUrl, type: string }
       - { name: seoKeywords, type: string, list: true }
       - name: contentAuthors
         label: Article authors
