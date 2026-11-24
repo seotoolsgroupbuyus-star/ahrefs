@@ -6,3 +6,13 @@
 
 /* Mobile navigation and optional editorial metadata are sourced from Pages CMS. */
 .mobile-nav{display:none}.mobile-nav summary{cursor:pointer;background:#1a284d;color:#fff;border-radius:8px;padding:10px 18px;font-weight:700}.mobile-nav nav{display:flex;flex-direction:column;gap:12px;position:absolute;right:16px;top:65px;background:#fff;border:1px solid #d9e5f5;box-shadow:0 12px 32px #12234438;padding:18px;border-radius:10px;z-index:50;min-width:210px}.navigation{position:relative}.article-meta{display:flex;flex-wrap:wrap;gap:15px;color:#4d5d77;font-size:14px}@media(max-width:800px){.navigation>nav{display:none}.mobile-nav{display:block}}
+
+/* Original JSX ArticleTable and BulletList content; rich-text editable in CMS. */
+.article-content .source-article-table{width:100%;max-width:100%;overflow-x:auto;margin:24px 0;border:1px solid #d8e2f0;border-radius:12px;box-shadow:0 2px 9px #1528460e}
+.article-content .source-article-table table{width:100%;min-width:480px;margin:0;border-collapse:collapse}
+.article-content .source-article-table th{background:#f5f8fc;color:#1a284d;font-weight:750}
+.article-content .source-article-table td{color:#556277;font-weight:500}
+.article-content .source-article-table th,.article-content .source-article-table td{padding:12px 16px;border-bottom:1px solid #e2e8f0;vertical-align:top}
+.article-content .source-article-list{display:block;list-style:disc outside;padding-left:25px;margin:0 0 24px;color:#556277;line-height:1.85}
+.article-content .source-article-list li{padding-left:4px;margin:8px 0}
+.article-content .source-article-list strong{color:#1a284d}
