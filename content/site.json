@@ -73,7 +73,7 @@
       "monthlyUsd": 5,
       "yearlyUsdPerMonth": 4,
       "popular": false,
-      "buyUrl": "https://members.buyseo.org/cart/index/product/id/62/c/",
+      "buyUrl": "https://pay.aherfsgroupbuy.com",
       "features": [
         "Ahrefs SEO Toolbar",
         "SERP Metrics (DR/UR)",
@@ -90,7 +90,7 @@
       "monthlyUsd": 22,
       "yearlyUsdPerMonth": 19,
       "popular": false,
-      "buyUrl": "https://members.buyseo.org/cart/index/product/id/63/c/",
+      "buyUrl": "https://pay.aherfsgroupbuy.com",
       "features": [
         "Ahrefs SEO Toolbar",
         "Site Explorer Access",
@@ -107,7 +107,7 @@
       "monthlyUsd": 35,
       "yearlyUsdPerMonth": 29,
       "popular": true,
-      "buyUrl": "https://members.buyseo.org/cart/index/product/id/64/c/",
+      "buyUrl": "https://pay.aherfsgroupbuy.com",
       "features": [
         "Everything in Standard",
         "Ahrefs Extension (Free)",
@@ -623,5 +623,6 @@
       "bio": "Bilal researches and writes guides on Ahrefs group buy access, pricing, risks, and alternatives so readers can compare options with clear, practical context.",
       "url": "https://aherfsgroupbuy.com/"
     }
-  ]
+  ],
+  "paymentBaseUrl": "https://pay.aherfsgroupbuy.com"
 }
