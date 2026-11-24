@@ -24,7 +24,7 @@ Date: 2026-11-25 (Pakistan time).
 | Reviews | Restored | 8 source testimonials and avatar references |
 | Privacy policy | Restored | 10 sections from source Privacy.tsx (replacing placeholder) |
 | Header / footer | Improved | Source-style anchor navigation, Get Started CTA and WhatsApp support |
-| CMS home settings | Expanded | Plans, FAQs, reviews, comparison, tools, limitations, navigation, CTA, footer |
+| CMS home settings | Expanded | Plans, FAQs, reviews, comparison, tools, limitations, navigation, CTA, footer, per-section headings, descriptions and feature tooltips |\n| Article schema and social metadata | Restored | Article Open Graph type, BreadcrumbList and WebPage/Article JSON-LD without invented author/dates |
 
 ## What is NOT yet confirmed as exact
 
@@ -32,7 +32,7 @@ Date: 2026-11-25 (Pakistan time).
 2. **Word-by-word article parity:** The 34 JSX originals were converted to HTML sections. The migration report has per-article token/word estimates, which are not proof of literal text identity, particularly for JSX dynamic output, tables and interactive components.
 3. **External services and business claims:** Review counts, uptime, customer counts, discount claims and checkout/payment options were copied from source, not independently validated. The original checkout URLs point at `members.buyseo.org`; they were not silently changed.
 4. **Live HTTP checks:** The old website's `/robots.txt`, `/sitemap.xml`, individual article responses, redirects and live headers could not all be retrieved through the available web crawler. Live production remains untouched.
-5. **Images on homepage:** The original React site loads tool logos from third-party icon/favicons URLs. The Astro homepage currently uses local initials rather than exact original logos; that is a visual mismatch.
+5. **Images on homepage:** The original React site loads tool logos from third-party icon/favicons URLs. The Astro homepage now uses the original Simple Icons CDN lookup for featured tool logos. Actual network/image fallback behavior still requires browser testing.
 6. **Cloudflare cutover:** This repo builds in CI, but was not deployed to Cloudflare custom domain. Deploy to a preview domain and compare before connecting production DNS.
 
 ## Deployment gate
