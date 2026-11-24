@@ -593,5 +593,35 @@
     "publishedLabel": "Published",
     "updatedLabel": "Updated",
     "bylineLabel": "By"
-  }
+  },
+  "seoKeywords": [
+    "Ahrefs group buy",
+    "shared Ahrefs access",
+    "SEO tools",
+    "keyword research",
+    "backlink analysis",
+    "site audit",
+    "competitor analysis",
+    "AhrefsGroupBuy"
+  ],
+  "contentAuthors": [
+    {
+      "name": "Waheed Ahmad",
+      "jobTitle": "Content editor & SEO researcher",
+      "bio": "Waheed researches and writes guides on Ahrefs group buy access, pricing, risks, and alternatives so readers can compare options with clear, practical context.",
+      "url": "https://aherfsgroupbuy.com/"
+    },
+    {
+      "name": "Saeed Fadi",
+      "jobTitle": "Content editor & SEO researcher",
+      "bio": "Saeed covers Ahrefs group buy topics, tool comparisons, and SEO workflows for readers who want straightforward guidance without hype.",
+      "url": "https://aherfsgroupbuy.com/"
+    },
+    {
+      "name": "Bilal Ahmad",
+      "jobTitle": "Content editor & SEO researcher",
+      "bio": "Bilal researches and writes guides on Ahrefs group buy access, pricing, risks, and alternatives so readers can compare options with clear, practical context.",
+      "url": "https://aherfsgroupbuy.com/"
+    }
+  ]
 }
