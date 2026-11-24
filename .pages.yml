@@ -67,6 +67,12 @@ content:
           - { name: relatedReadingTitle, type: string }
           - { name: headerButton, type: string }
           - { name: footerSupportLabel, type: string }
+          - { name: viewAllTools, type: string }
+          - { name: allToolsTitle, type: string }
+          - { name: allToolsDescription, type: text }
+          - { name: closeModal, type: string }
+          - { name: comparisonFeatureHeader, type: string }
+          - { name: whatsappSupport, type: string }
       - { name: siteUrl, type: string }
       - { name: homeTitle, type: string }
       - { name: homeDescription, type: text }
@@ -147,6 +153,7 @@ content:
         fields:
           - { name: name, type: string }
           - { name: color, type: string }
+          - { name: logo, type: image, options: { media: uploads } }
       - { name: problemBullets, type: string, list: true }
       - { name: solutionBullets, type: string, list: true }
       - name: homeCopy
