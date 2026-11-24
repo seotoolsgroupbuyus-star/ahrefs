@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import {site,articles} from '../lib/data.js';
+const pillars=articles.filter(a=>a.isPillar);
+---
+<Base><section class="hero"><div class="container"><span class="eyebrow">{site.brand} · SEO research guides</span><h1>{site.heroTitle} <span>{site.heroSubtitle}</span></h1><p>{site.heroDescription}</p><div class="actions"><a class="btn" href={site.primaryCtaUrl}>{site.primaryCtaText}</a><a class="btn alt" href={site.secondaryCtaUrl}>{site.secondaryCtaText}</a></div><div class="chips"><span>Site Explorer</span><span>Keywords Explorer</span><span>Site Audit</span><span>Rank Tracker</span><span>Content Gap</span></div></div></section>
+<section class="container section"><h2>Ahrefs guides & comparisons</h2><p>Read detailed guides about access, pricing, trust, limitations and alternative tools.</p><div class="cards">{pillars.map(a=><article class="card"><span class="label">{a.cluster}</span><h3><a href={'/'+a.slug+'/'}>{a.title}</a></h3><p>{a.seoDescription}</p><a href={'/'+a.slug+'/'}>Read the guide</a></article>)}</div></section>
+<section class="container section" id="pricing"><h2>Available plans</h2><p>Plan details copied from supplied source. Confirm availability and pricing before publication.</p><div class="cards">{site.plans.map(p=><article class="card price"><h3>{p.name}</h3><p>{p.description}</p><strong>${p.price}<small>/month</small></strong><ul>{p.features.map(f=><li>{f}</li>)}</ul><a class="btn" href={p.url}>Choose plan</a></article>)}</div></section>
+{site.sections?.map(s=><section class="container section"><h2>{s.heading}</h2><p>{s.paragraph}</p></section>)}
+<section class="container section" id="faq"><h2>Frequently asked questions</h2>{site.faq.map(f=><details class="faq"><summary>{f.question}</summary><p>{f.answer}</p></details>)}</section>
+</Base>

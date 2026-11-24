@@ -1,0 +1,36 @@
+{
+  "brand": "AhrefsGroupBuy",
+  "siteUrl": "https://aherfsgroupbuy.com",
+  "description": "Premium Ahrefs Group Buy Access for SEO Professionals.",
+  "whatsappUrl": "https://wa.me/447845432224",
+  "homeTitle": "AhrefsGroupBuy – Fast, Stable Shared Ahrefs Access",
+  "homeDescription": "AhrefsGroupBuy shares Ahrefs for keyword research, backlinks, audits, and competitors—dashboard access with responsive support.",
+  "heroTitle": "Ahrefs Group Buy",
+  "heroSubtitle": "Affordable access to premium SEO research tools",
+  "heroDescription": "Compare plans, features, limits and realistic usage before you choose shared access.",
+  "primaryCtaText": "Explore plans",
+  "primaryCtaUrl": "/#pricing",
+  "secondaryCtaText": "Explore guides",
+  "secondaryCtaUrl": "/ahrefs-group-buy-guide/",
+  "footerText": "SEO tools information and shared access guides",
+  "menu": [
+    {
+      "label": "Home",
+      "url": "/"
+    },
+    {
+      "label": "Guides",
+      "url": "/ahrefs-group-buy-guide/"
+    },
+    {
+      "label": "Pricing",
+      "url": "/#pricing"
+    },
+    {
+      "label": "Privacy",
+      "url": "/privacy/"
+    }
+  ],
+  "plans": [],
+  "faq": []
+}

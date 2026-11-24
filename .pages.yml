@@ -1,0 +1,71 @@
+settings:
+  content:
+    merge: true
+media:
+  - name: uploads
+    label: Images
+    input: public/images
+    output: /images
+    categories: [image]
+content:
+  - name: articles
+    label: Articles
+    type: collection
+    path: content/articles
+    format: json
+    filename: "{slug}.json"
+    view: { primary: title, fields: [title, slug, status] }
+    fields:
+      - { name: title, type: string, required: true }
+      - { name: slug, type: string, required: true }
+      - { name: status, type: select, options: { values: [published, draft] } }
+      - { name: isPillar, type: boolean }
+      - { name: cluster, type: string }
+      - { name: seoTitle, type: string }
+      - { name: seoDescription, type: text }
+      - name: sections
+        label: Article sections
+        type: object
+        list: true
+        fields:
+          - { name: heading, type: string }
+          - { name: html, type: rich-text, options: { format: html, media: uploads, switcher: false } }
+  - name: site
+    label: Site settings and homepage
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - { name: brand, type: string }
+      - { name: siteUrl, type: string }
+      - { name: homeTitle, type: string }
+      - { name: homeDescription, type: text }
+      - { name: heroTitle, type: string }
+      - { name: heroSubtitle, type: string }
+      - { name: heroDescription, type: text }
+      - { name: primaryCtaText, type: string }
+      - { name: primaryCtaUrl, type: string }
+      - { name: secondaryCtaText, type: string }
+      - { name: secondaryCtaUrl, type: string }
+      - { name: whatsappUrl, type: string }
+      - { name: footerText, type: text }
+      - name: menu
+        type: object
+        list: true
+        fields:
+          - { name: label, type: string }
+          - { name: url, type: string }
+      - name: plans
+        type: object
+        list: true
+        fields:
+          - { name: name, type: string }
+          - { name: price, type: string }
+          - { name: description, type: text }
+          - { name: url, type: string }
+      - name: faq
+        type: object
+        list: true
+        fields:
+          - { name: question, type: string }
+          - { name: answer, type: text }

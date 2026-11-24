@@ -1,0 +1,7 @@
+---
+import Base from '../layouts/Base.astro';
+import privacy from '../../content/privacy.json';
+---
+<Base title={privacy.seoTitle} description={privacy.seoDescription} pathname="/privacy/">
+<div class="container section"><article class="article-content rich" set:html={privacy.html}/></div>
+</Base>
