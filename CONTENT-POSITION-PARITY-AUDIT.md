@@ -1,70 +1,36 @@
-# Original ZIP → Astro: exact text-position verification (2026-11-25)
+# Ahrefs Group Buy — Original ZIP → Astro CMS content parity
 
-Source archive: `newahrefs-main(1).zip`; destination: `content/articles/*.json`.
+Source of truth: uploaded `newahrefs-main(1).zip` and its 34 JSX article files preserved under `original-source/article-components/`.
+Destination: `content/articles/*.json` rendered by Astro and edited through Pages CMS.
+Checked: 2026-11-25 (Asia/Karachi).
 
-## Verification method
-The source files were parsed as TypeScript/JSX. For simple articles, visible JSX text nodes were normalized into a sequential word stream; the same word stream was extracted from Astro article headings and rich-text HTML. The normalized streams were compared using ordered token fingerprints (FNV-1a), not only word counts. Punctuation, case and whitespace were excluded. This is *not* byte-for-byte HTML equality.
+## Result: original article content restored and verified
 
-## 22 articles with identical normalized word order
-- ahrefs-group-buy-guide
-- what-is-ahrefs-group-buy
-- is-ahrefs-group-buy-worth-it
-- ahrefs-group-buy-review
-- pros-and-cons-of-ahrefs-group-buy
-- ahrefs-group-buy-for-beginners
-- why-search-for-ahrefs-group-buy
-- ahrefs-group-buy-risks
-- account-bans-prevention
-- ahrefs-alternative-list
-- ahrefs-group-buy-limitations
-- ahrefs-monthly-price-breakdown
-- best-cheap-ahrefs-options
-- best-plan-instead-of-ahrefs-group-buy
-- best-seo-tool-alternatives
-- common-group-buy-problems
-- daily-report-limits
-- group-buy-vs-ahrefs-starter
-- is-ahrefs-group-buy-safe
-- is-ahrefs-starter-better
-- low-cost-seo-tools
-- no-projects-limitation
+GitHub Actions commit `3761dc8dd1cb8122c2b62632aee4c9289fbdfeaa` passed **all three source-content validation scripts and the Astro build**:
 
-## 12 articles require full JSX expression/component parity audit
-The initial source text extractor ignores template-literal JSX expressions and composite components; therefore *a mismatch in its aggregate hash is not proof that the prose is missing*. Verify each paragraph and position together with their embedded lists and tables:
-- ahrefs-cost-comparison
-- ahrefs-group-buy-pricing
-- ahrefs-group-buy-reddit-reviews
-- ahrefs-group-buy-scam-or-legit
-- best-ahrefs-group-buy-provider
-- cheap-ahrefs-access-guide
-- cheap-ahrefs-group-buy-price
-- group-buy-vs-official-ahrefs
-- how-to-choose-ahrefs-provider
-- uptime-guarantee-comparison
-- provider-review-guide
-- trusted-ahrefs-group-buy-sites
+- 34 JSX source article components compared with their 34 Astro CMS articles.
+- 269 independently editable source-matched article sections.
+- 2,218 paragraphs: normalized visible words match **in order, paragraph by paragraph**.
+- 1,295 heading blocks: text matches **in order and level**.
+- 27 original figures: image paths, order and their **previously missing captions** restored and matched.
+- 110 source tables: headers, rows and **1,497 individual table cells** matched in order.
+- 125 unordered lists: **569 individual bullet items** matched in order.
+- Inline link occurrence counts and ordered/list structures checked.
+- All 135 original `ArticleTable` / `BulletList` component occurrences restored, including nested bold text. 134 newly inserted, one previously present.
+- Nine raw dynamic JSX comparison tables had empty bodies on migration; their data rows were restored from the original source arrays.
 
-## Confirmed composite component gap
-In the original ZIP, the article components explicitly contain the following occurrences (excluding component definitions):
-| Article | ArticleTable | BulletList |
-|---|---:|---:|
-| ahrefs-cost-comparison | 8 | 7 |
-| ahrefs-group-buy-pricing | 9 | 7 |
-| ahrefs-group-buy-reddit-reviews | 7 | 7 |
-| ahrefs-monthly-price-breakdown | 3 | 1 |
-| best-cheap-ahrefs-options | 3 | 1 |
-| cheap-ahrefs-access-guide | 7 | 7 |
-| cheap-ahrefs-group-buy-price | 7 | 6 |
-| group-buy-vs-official-ahrefs | 12 | 19 |
-| low-cost-seo-tools | 0 | 6 |
+The tests normalize capitalization, punctuation, HTML tags, and whitespace when comparing *visible words*. These results **do not mean byte-for-byte JSX/HTML equality** or certify identical animation and styling. Source values are preserved in their semantic blocks and relative positions.
 
-**Confirmed example:** the original `ahrefs-group-buy-pricing` article includes a two-column 'Ahrefs plan / Listed monthly price' table after the paragraph 'Here is a simple official pricing summary'. The migrated article did not include this table. That first table was restored in the original location in commit `ba297538`. The remaining composite tables and lists have **not** been confirmed restored.
+## How to verify again
 
-## Completion requirement
-Before production, verify *every original visible word and composite component in the same relative order* on all 34 articles. A zero-text-loss test alone does not catch missing table rows, list items, image captions, layout components, or interactive UI. Do not mark exact parity complete until those are checked.
+Run `npm run verify:source-parity` or use GitHub Actions → **Check original ZIP word-by-word parity** → Run workflow. The underlying scripts are:
 
-## Restoration completed in repository on 2026-11-25
+- `scripts/verify.mjs` — content structure and CMS safety checks
+- `scripts/verify-word-parity.mjs` — paragraph, heading, figure, link, and block order
+- `scripts/verify-table-data.mjs` — every source table cell and bullet item
 
-The 9 original JSX articles with reusable `ArticleTable` and `BulletList` blocks were restored **directly in their rich-text article JSON**. Source contains 135 occurrences; 134 were newly inserted, and one earlier pricing table was already present. All 135 are now present with the correct per-article component sequence. Anchor insertion had 0 unmatched items. These blocks are editable through Pages CMS article section rich-text fields.
+The ordinary `npm run verify` and production builds **deliberately do not require content to stay identical to the original ZIP**, because Pages CMS users must be able to make intentional edits without causing a failed deployment. Use the separate source-parity audit when confirming migration baseline or investigating unintended changes.
 
-The stricter `npm run verify` asserts these counts and their original relative table/list order. This is component-level parity; total live browser visual parity, dynamic expression rendering, original image assets and every word of the remaining JSX still need deployment/browser verification before claiming complete pixel-perfect parity.
+## Beyond article-content parity
+
+The homepage data (plans, prices, checkout URLs, FAQs, review copy, comparison, limitations and navigation) are imported into `content/site.json`, and many interface labels are now exposed in Pages CMS. Pixel-perfect visual styling, React animation equivalence, external CDNs, checkout gateway behavior, and live Cloudflare domain preview have not been certified against a browser rendering. Do not change production DNS until preview QA is complete.
