@@ -25,6 +25,7 @@ for(const file of files){
  }
 }
 assert(site.siteUrl==='https://aherfsgroupbuy.com','Site URL differs from source');
+assert(/^https:\/\/pay\.aherfsgroupbuy\.com\/?$/.test(site.paymentBaseUrl),'Payment homepage URL must use Ahrefs pay subdomain');
 assert(site.plans?.length>0,'At least one homepage plan is required');
 assert(Array.isArray(site.faq),'Homepage FAQ must be a list');
 assert(Array.isArray(site.reviews),'Homepage reviews must be a list');
@@ -34,7 +35,7 @@ assert(Array.isArray(site.tools),'Homepage tools must be a list');
 assert(Array.isArray(site.menu),'Main navigation must be a list');
 for(const p of site.plans||[]){
  assert(p.monthlyUsd>0 && p.yearlyUsdPerMonth>0,'Plan price missing: '+p.name);
- assert(/^https:\/\//.test(p.buyUrl),'Checkout URL missing: '+p.name);
+ assert(p.buyUrl===site.paymentBaseUrl,'Checkout should use the Ahrefs payment homepage: '+p.name);
  assert((p.features||[]).length>0,'Plan features missing: '+p.name);
 }
 for(const menu of [...(site.menu||[]),...(site.footerMenu||[])]){
