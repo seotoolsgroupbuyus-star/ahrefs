@@ -82,6 +82,16 @@ content:
           - { name: updatedLabel, type: string }
           - { name: bylineLabel, type: string }
       - { name: siteUrl, type: string }
+      - { name: seoKeywords, type: string, list: true }
+      - name: contentAuthors
+        label: Article authors
+        type: object
+        list: true
+        fields:
+          - { name: name, type: string }
+          - { name: jobTitle, type: string }
+          - { name: bio, type: text }
+          - { name: url, type: string }
       - { name: homeTitle, type: string }
       - { name: homeDescription, type: text }
       - { name: heroBadge, type: string }
