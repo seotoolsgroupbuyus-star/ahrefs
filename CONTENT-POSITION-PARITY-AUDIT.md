@@ -62,3 +62,9 @@ In the original ZIP, the article components explicitly contain the following occ
 
 ## Completion requirement
 Before production, verify *every original visible word and composite component in the same relative order* on all 34 articles. A zero-text-loss test alone does not catch missing table rows, list items, image captions, layout components, or interactive UI. Do not mark exact parity complete until those are checked.
+
+## Restoration completed in repository on 2026-11-25
+
+The 9 original JSX articles with reusable `ArticleTable` and `BulletList` blocks were restored **directly in their rich-text article JSON**. Source contains 135 occurrences; 134 were newly inserted, and one earlier pricing table was already present. All 135 are now present with the correct per-article component sequence. Anchor insertion had 0 unmatched items. These blocks are editable through Pages CMS article section rich-text fields.
+
+The stricter `npm run verify` asserts these counts and their original relative table/list order. This is component-level parity; total live browser visual parity, dynamic expression rendering, original image assets and every word of the remaining JSX still need deployment/browser verification before claiming complete pixel-perfect parity.
