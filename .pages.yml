@@ -21,6 +21,10 @@ content:
       - { name: status, type: select, options: { values: [published, draft] } }
       - { name: isPillar, type: boolean }
       - { name: cluster, type: string }
+      - { name: parentSlug, type: string }
+      - { name: authorName, type: string }
+      - { name: datePublished, type: string }
+      - { name: dateModified, type: string }
       - { name: seoTitle, type: string }
       - { name: seoDescription, type: text }
       - name: sections
@@ -73,6 +77,10 @@ content:
           - { name: closeModal, type: string }
           - { name: comparisonFeatureHeader, type: string }
           - { name: whatsappSupport, type: string }
+          - { name: mobileMenu, type: string }
+          - { name: publishedLabel, type: string }
+          - { name: updatedLabel, type: string }
+          - { name: bylineLabel, type: string }
       - { name: siteUrl, type: string }
       - { name: homeTitle, type: string }
       - { name: homeDescription, type: text }
