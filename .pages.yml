@@ -120,6 +120,53 @@ content:
           - { name: color, type: string }
       - { name: problemBullets, type: string, list: true }
       - { name: solutionBullets, type: string, list: true }
+      - name: homeCopy
+        label: Homepage section headings and labels
+        type: object
+        fields:
+          - { name: pricingEyebrow, type: string }
+          - { name: pricingTitle, type: string }
+          - { name: pricingLead, type: text }
+          - { name: offerLabel, type: string }
+          - { name: offerText, type: string }
+          - { name: whyEyebrow, type: string }
+          - { name: whyTitle, type: string }
+          - { name: whyDescription, type: text }
+          - { name: problemTitle, type: string }
+          - { name: solutionTitle, type: string }
+          - { name: toolsEyebrow, type: string }
+          - { name: toolsTitle, type: string }
+          - { name: toolsDescription, type: text }
+          - { name: toolBadge, type: string }
+          - { name: comparisonTitle, type: string }
+          - { name: comparisonHint, type: text }
+          - { name: extensionEyebrow, type: string }
+          - { name: extensionTitle, type: string }
+          - { name: extensionDescription, type: text }
+          - { name: limitationsEyebrow, type: string }
+          - { name: limitationsTitle, type: string }
+          - { name: limitationsDescription, type: text }
+          - { name: reviewsEyebrow, type: string }
+          - { name: reviewsTitle, type: string }
+          - { name: reviewsCount, type: string }
+          - { name: faqTitle, type: string }
+          - { name: faqLead, type: text }
+          - { name: guidesTitle, type: string }
+          - { name: guidesLabel, type: string }
+      - name: extensionFeatures
+        label: Toolbar feature descriptions
+        type: object
+        list: true
+        fields:
+          - { name: title, type: string }
+          - { name: description, type: text }
+      - name: featureDescriptions
+        label: Pricing feature descriptions
+        type: object
+        list: true
+        fields:
+          - { name: name, type: string }
+          - { name: description, type: text }
   - name: privacy
     label: Privacy Policy
     type: file
