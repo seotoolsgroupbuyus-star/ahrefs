@@ -540,5 +540,40 @@
       "name": "24/7 Live Chat",
       "description": "Faster support availability for urgent access problems."
     }
-  ]
+  ],
+  "uiLabels": {
+    "heroChips": [
+      "Official Data",
+      "Instant Setup",
+      "Private Projects"
+    ],
+    "trustStrip": [
+      "✓ SSL Secure",
+      "✓ Encrypted Payment",
+      "✓ Verified Access"
+    ],
+    "toolStripHeading": "Included in your AhrefsGroupBuy access",
+    "billingLabel": "Billing",
+    "monthlyLabel": "Monthly",
+    "yearlyLabel": "Yearly -20%",
+    "currencyLabel": "Currency",
+    "usdLabel": "USD",
+    "pkrLabel": "PKR",
+    "popularRibbon": "Recommended for you",
+    "includedToolsLabel": "Included tools",
+    "planButton": "Get Started",
+    "copyCouponLabel": "Copy Code",
+    "copiedCouponLabel": "Copied",
+    "comparisonCaption": "Source website comparison data",
+    "comparisonGroupBuyHeader": "AhrefsGroupBuy (Group Buy)",
+    "comparisonDirectHeader": "Ahrefs Direct",
+    "articleCategorySuffix": "Ahrefs knowledge base",
+    "tableOfContentsTitle": "On this page",
+    "articleAsideTitle": "Explore your options",
+    "articleAsideDescription": "Compare plans, features and usage restrictions before deciding.",
+    "articleAsideButton": "View pricing",
+    "relatedReadingTitle": "Related reading",
+    "headerButton": "Get Started",
+    "footerSupportLabel": "WhatsApp Support"
+  }
 }
