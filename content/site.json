@@ -421,5 +421,124 @@
     "/avatars/a3.svg",
     "/avatars/a4.svg",
     "/avatars/a5.svg"
+  ],
+  "homeCopy": {
+    "pricingEyebrow": "Choose Your Plan",
+    "pricingTitle": "Pricing That Fits Your Budget",
+    "pricingLead": "Choose the perfect plan for your SEO needs. From individual bloggers to large agencies, we've got you covered.",
+    "offerLabel": "Limited Time Offer",
+    "offerText": "Get extra 20% off on your first month",
+    "whyEyebrow": "Why Choose Shared Access?",
+    "whyTitle": "Why Choose Shared Access?",
+    "whyDescription": "Traditional tool subscriptions are designed for big agencies. We make them accessible for everyone.",
+    "problemTitle": "The Problem",
+    "solutionTitle": "The Solution",
+    "toolsEyebrow": "Premium tools",
+    "toolsTitle": "Get Instant Access to 20+ Premium SEO Tools",
+    "toolsDescription": "Everything you need for SEO, Content, and Design in one place.",
+    "toolBadge": "Premium Access",
+    "comparisonTitle": "Official Ahrefs vs AhrefsGroupBuy: The Price Gap",
+    "comparisonHint": "Tip: Use this table to match the plan to your budget and workflow.",
+    "extensionEyebrow": "Exclusive Extension Access",
+    "extensionTitle": "Use Ahrefs SEO Toolbar Directly in Your Browser",
+    "extensionDescription": "Stop switching tabs. Get critical SEO metrics like Domain Rating, URL Rating, and Backlink counts directly on Google SERPs and any website you visit.",
+    "limitationsEyebrow": "Transparency First",
+    "limitationsTitle": "Transparent Limitations — We Keep it Honest",
+    "limitationsDescription": "We believe in being 100% honest with our users. To maintain the highest stability and lowest prices, we have a few common-sense rules.",
+    "reviewsEyebrow": "Success Stories",
+    "reviewsTitle": "What Our Users Say About Us",
+    "reviewsCount": "Based on 1,428 reviews",
+    "faqTitle": "Ahrefs Group Buy — Frequently Asked Questions",
+    "faqLead": "Everything you need to know about our Ahrefs access.",
+    "guidesTitle": "Ahrefs guides & comparisons",
+    "guidesLabel": "Read guide"
+  },
+  "extensionFeatures": [
+    {
+      "title": "SERP Overview",
+      "description": "Get DR, UR, and Backlink counts directly on Google search results."
+    },
+    {
+      "title": "Domain Metrics",
+      "description": "Check any website’s strength without leaving the page."
+    },
+    {
+      "title": "Keyword Difficulty",
+      "description": "Instantly see how hard it is to rank for any search term."
+    },
+    {
+      "title": "Quick Analysis",
+      "description": "One-click access to full Site Explorer reports."
+    }
+  ],
+  "featureDescriptions": [
+    {
+      "name": "Ahrefs SEO Toolbar",
+      "description": "Browser-based metrics (DR/UR) and quick checks while you browse."
+    },
+    {
+      "name": "SERP Metrics (DR/UR)",
+      "description": "Show authority-style metrics directly on search results pages."
+    },
+    {
+      "name": "Backlink Counts",
+      "description": "Quick backlink totals for domains/pages (summary-level view)."
+    },
+    {
+      "name": "Keyword Difficulty",
+      "description": "Difficulty estimate for ranking—useful for quick keyword triage."
+    },
+    {
+      "name": "Chrome Extension",
+      "description": "Use the toolbar inside Chrome for on-page + SERP overlays."
+    },
+    {
+      "name": "Basic Support",
+      "description": "Standard help response—best for casual or learning use."
+    },
+    {
+      "name": "Site Explorer Access",
+      "description": "Domain and page research (traffic, backlinks, top pages)."
+    },
+    {
+      "name": "Keywords Explorer",
+      "description": "Keyword ideas + volume/difficulty style metrics for planning."
+    },
+    {
+      "name": "30 Credits / Day",
+      "description": "Daily quota to keep shared access stable across all members."
+    },
+    {
+      "name": "Rank Tracker",
+      "description": "Track selected keywords over time (usually limited vs retail)."
+    },
+    {
+      "name": "Support Included",
+      "description": "Support channel included for setup and access issues."
+    },
+    {
+      "name": "Everything in Standard",
+      "description": "Includes the full feature set from the Standard plan."
+    },
+    {
+      "name": "20+ Premium SEO Tools",
+      "description": "Access to extra SEO + content + design tools inside the same bundle."
+    },
+    {
+      "name": "Canva Pro & Grammarly",
+      "description": "Design and writing helpers bundled into the toolkit."
+    },
+    {
+      "name": "Indexification API",
+      "description": "Indexing helper access for faster discovery (fair-use rules apply)."
+    },
+    {
+      "name": "VIP Discord Access",
+      "description": "Community + updates channel for help and announcements."
+    },
+    {
+      "name": "24/7 Live Chat",
+      "description": "Faster support availability for urgent access problems."
+    }
   ]
 }
