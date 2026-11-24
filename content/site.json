@@ -588,6 +588,10 @@
     "allToolsDescription": "Explore the tools included with our premium bundle.",
     "closeModal": "Close",
     "comparisonFeatureHeader": "Feature",
-    "whatsappSupport": "WhatsApp support"
+    "whatsappSupport": "WhatsApp support",
+    "mobileMenu": "Menu",
+    "publishedLabel": "Published",
+    "updatedLabel": "Updated",
+    "bylineLabel": "By"
   }
 }
