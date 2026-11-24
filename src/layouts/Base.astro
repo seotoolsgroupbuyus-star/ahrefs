@@ -1,16 +1,16 @@
 ---
 import {site,absolute} from '../lib/data.js';
 import '../styles/main.css';
-const {title=site.homeTitle,description=site.homeDescription,pathname='/',image='/og.svg'}=Astro.props;
+const {title=site.homeTitle,description=site.homeDescription,pathname='/',image='/og.svg',type='website',structuredData=[]}=Astro.props;
 const canonical=absolute(pathname);
 const schema={'@context':'https://schema.org','@type':'WebSite',name:site.brand,url:site.siteUrl};
 ---
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>{title}</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/>
-<meta name="robots" content="index,follow"/><meta name="google-site-verification" content={site.googleSiteVerification}/>
-<meta property="og:type" content="website"/><meta property="og:url" content={canonical}/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:image" content={absolute(image)}/>
-<meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/>
-<link rel="icon" href="/og.svg" type="image/svg+xml"/><script type="application/ld+json" set:html={JSON.stringify(schema)}/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>{site.googleSiteVerification&&<meta name="google-site-verification" content={site.googleSiteVerification}/>}
+<meta property="og:type" content={type}/><meta property="og:site_name" content={site.brand}/><meta property="og:locale" content="en_US"/><meta property="og:url" content={canonical}/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:image" content={absolute(image)}/>
+<meta name="twitter:card" content="summary_large_image"/><meta name="publisher" content={site.brand}/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/>
+<link rel="icon" href="/og.svg" type="image/svg+xml"/><script type="application/ld+json" set:html={JSON.stringify(schema)}/>{structuredData.map(item=><script type="application/ld+json" set:html={JSON.stringify(item)}/>)}
 </head><body><header class="site-head"><div class="container navigation"><a class="brand" href="/">{site.brand}</a><nav aria-label="Primary menu">{site.menu.map(item=><a href={item.url}>{item.label}</a>)}</nav><a class="chat-link" href={site.primaryCtaUrl}>Get Started</a></div></header>
 <main><slot/></main><footer><div class="container footer-inner"><a href="/">{site.brand}</a><p>{site.footerText}</p><a href={site.whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp Support</a><nav aria-label="Footer navigation">{(site.footerMenu||[]).map(item=><a href={item.url}>{item.label}</a>)}</nav></div></footer></body></html>
