@@ -12,13 +12,14 @@ const breadcrumbs=[
   ...(parent?[{'@type':'ListItem',position:2,name:article.cluster||parent.title,item:origin+'/'+parent.slug+'/'}]:[]),
   {'@type':'ListItem',position:parent?3:2,name:article.title,item:canonical}
 ];
+const dates={datePublished:article.datePublished||null,dateModified:article.dateModified||null};
 const structuredData=[
  {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:breadcrumbs},
- {'@context':'https://schema.org','@type':article.isPillar?'WebPage':'Article',headline:article.title,description:article.seoDescription,url:canonical,inLanguage:'en',publisher:{'@type':'Organization',name:site.brand,url:origin}}
+ {'@context':'https://schema.org','@type':article.isPillar?'WebPage':'Article',headline:article.title,description:article.seoDescription,url:canonical,inLanguage:'en',publisher:{'@type':'Organization',name:site.brand,url:origin},...(dates.datePublished?{datePublished:dates.datePublished}:{}),...(dates.dateModified?{dateModified:dates.dateModified}:{}),...(article.authorName?{author:{'@type':'Person',name:article.authorName}}:{})}
 ];
 ---
 <Base title={article.seoTitle} description={article.seoDescription} pathname={'/'+article.slug+'/'} type="article" structuredData={structuredData}>
-<section class="article-hero"><div class="container"><p class="eyebrow">{article.cluster} · {site.uiLabels.articleCategorySuffix}</p><h1>{article.title}</h1><p>{article.seoDescription}</p></div></section>
+<section class="article-hero"><div class="container"><p class="eyebrow">{article.cluster} · {site.uiLabels.articleCategorySuffix}</p><h1>{article.title}</h1><p>{article.seoDescription}</p>{(article.authorName||dates.datePublished||dates.dateModified)&&<p class="article-meta">{article.authorName&&<span>{site.uiLabels.bylineLabel} {article.authorName}</span>}{dates.datePublished&&<span>{site.uiLabels.publishedLabel} <time datetime={dates.datePublished}>{dates.datePublished}</time></span>}{dates.dateModified&&<span>{site.uiLabels.updatedLabel} <time datetime={dates.dateModified}>{dates.dateModified}</time></span>}</p>}</div></section>
 <div class="container article-shell"><aside class="article-toc"><h2>{site.uiLabels.tableOfContentsTitle}</h2>{article.sections.map((s,i)=><a href={'#section-'+i}>{s.heading}</a>)}</aside><article class="article-content">{article.sections.map((s,i)=><section id={'section-'+i}><h2>{s.heading}</h2><div class="rich" set:html={s.html}/></section>)}</article><aside class="article-aside"><div class="help-card"><h3>{site.uiLabels.articleAsideTitle}</h3><p>{site.uiLabels.articleAsideDescription}</p><a class="btn" href="/#pricing">{site.uiLabels.articleAsideButton}</a></div></aside></div>
 <section class="container section"><h2>{site.uiLabels.relatedReadingTitle}</h2><div class="cards">{siblings.map(a=><article class="card"><h3><a href={'/'+a.slug+'/'}>{a.title}</a></h3><p>{a.seoDescription}</p></article>)}</div></section>
 </Base>
