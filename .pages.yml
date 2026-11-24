@@ -38,6 +38,35 @@ content:
     format: json
     fields:
       - { name: brand, type: string }
+      - name: uiLabels
+        label: Shared interface labels
+        type: object
+        fields:
+          - { name: heroChips, type: string, list: true }
+          - { name: trustStrip, type: string, list: true }
+          - { name: toolStripHeading, type: string }
+          - { name: billingLabel, type: string }
+          - { name: monthlyLabel, type: string }
+          - { name: yearlyLabel, type: string }
+          - { name: currencyLabel, type: string }
+          - { name: usdLabel, type: string }
+          - { name: pkrLabel, type: string }
+          - { name: popularRibbon, type: string }
+          - { name: includedToolsLabel, type: string }
+          - { name: planButton, type: string }
+          - { name: copyCouponLabel, type: string }
+          - { name: copiedCouponLabel, type: string }
+          - { name: comparisonCaption, type: string }
+          - { name: comparisonGroupBuyHeader, type: string }
+          - { name: comparisonDirectHeader, type: string }
+          - { name: articleCategorySuffix, type: string }
+          - { name: tableOfContentsTitle, type: string }
+          - { name: articleAsideTitle, type: string }
+          - { name: articleAsideDescription, type: text }
+          - { name: articleAsideButton, type: string }
+          - { name: relatedReadingTitle, type: string }
+          - { name: headerButton, type: string }
+          - { name: footerSupportLabel, type: string }
       - { name: siteUrl, type: string }
       - { name: homeTitle, type: string }
       - { name: homeDescription, type: text }
