@@ -9,86 +9,123 @@ media:
     categories: [image]
 content:
   - name: articles
-    label: Ahrefs Articles
+    label: Articles
     type: collection
     path: content/articles
     format: json
     filename: "{slug}.json"
-    view: {primary: title, fields: [title, slug, status]}
-    operations: {rename: false, delete: false}
+    view: { primary: title, fields: [title, slug, status] }
     fields:
-      - {name: title, type: string, required: true}
-      - {name: slug, type: string, readonly: true}
-      - {name: status, type: select, options: {values: [published, draft]}}
-      - {name: seoTitle, type: string}
-      - {name: seoDescription, type: text}
-      - {name: cluster, type: string}
-      - {name: isPillar, type: boolean}
-      - {name: parentSlug, type: string}
+      - { name: title, type: string, required: true }
+      - { name: slug, type: string, required: true }
+      - { name: status, type: select, options: { values: [published, draft] } }
+      - { name: isPillar, type: boolean }
+      - { name: cluster, type: string }
+      - { name: seoTitle, type: string }
+      - { name: seoDescription, type: text }
       - name: sections
-        label: Article Sections
+        label: Article sections
         type: object
         list:
-          collapsible: {collapsed: true, summary: "{heading}"}
+          collapsible: { collapsed: true, summary: "{heading}" }
         fields:
-          - {name: heading, type: string}
-          - {name: html, type: rich-text, options: {format: html, media: uploads, switcher: false}}
+          - { name: heading, type: string }
+          - { name: html, type: rich-text, options: { format: html, media: uploads, switcher: false } }
   - name: site
-    label: Homepage, Header, Pricing & Footer
+    label: Homepage, Plans, Navigation, FAQ and Reviews
     type: file
     path: content/site.json
     format: json
     fields:
-      - {name: brand, type: string}
-      - {name: siteUrl, type: string}
-      - {name: description, type: text}
-      - {name: whatsappUrl, type: string}
-      - {name: homeTitle, type: string}
-      - {name: homeDescription, type: text}
-      - {name: heroTitle, type: string}
-      - {name: heroSubtitle, type: string}
-      - {name: heroDescription, type: text}
-      - {name: primaryCtaText, type: string}
-      - {name: primaryCtaUrl, type: string}
-      - {name: secondaryCtaText, type: string}
-      - {name: secondaryCtaUrl, type: string}
-      - {name: footerText, type: text}
-      - {name: googleSiteVerification, type: string}
+      - { name: brand, type: string }
+      - { name: siteUrl, type: string }
+      - { name: homeTitle, type: string }
+      - { name: homeDescription, type: text }
+      - { name: heroBadge, type: string }
+      - { name: heroTitle, type: string }
+      - { name: heroDescription, type: text }
+      - { name: heroTrust, type: string }
+      - { name: primaryCtaText, type: string }
+      - { name: primaryCtaUrl, type: string }
+      - { name: secondaryCtaText, type: string }
+      - { name: secondaryCtaUrl, type: string }
+      - { name: whatsappUrl, type: string }
+      - { name: footerText, type: text }
+      - { name: pkrRate, type: number }
+      - { name: couponCode, type: string }
       - name: menu
         type: object
         list: true
         fields:
-          - {name: label, type: string}
-          - {name: url, type: string}
+          - { name: label, type: string }
+          - { name: url, type: string }
+      - name: footerMenu
+        type: object
+        list: true
+        fields:
+          - { name: label, type: string }
+          - { name: url, type: string }
+      - { name: toolStrip, type: string, list: true }
+      - { name: heroAvatars, type: image, list: true, options: { media: uploads } }
       - name: plans
         type: object
-        list: true
+        list:
+          collapsible: { collapsed: true, summary: "{name}" }
         fields:
-          - {name: id, type: string}
-          - {name: name, type: string}
-          - {name: description, type: text}
-          - {name: price, type: string}
-          - {name: url, type: string}
-          - {name: features, type: string, list: true}
-      - name: sections
-        type: object
-        list: true
-        fields:
-          - {name: heading, type: string}
-          - {name: paragraph, type: text}
+          - { name: id, type: string }
+          - { name: name, type: string }
+          - { name: description, type: text }
+          - { name: monthlyUsd, type: number }
+          - { name: yearlyUsdPerMonth, type: number }
+          - { name: popular, type: boolean }
+          - { name: buyUrl, type: string }
+          - { name: features, type: string, list: true }
+          - { name: tools, type: string, list: true }
       - name: faq
         type: object
+        list:
+          collapsible: { collapsed: true, summary: "{question}" }
+        fields:
+          - { name: question, type: string }
+          - { name: answer, type: text }
+      - name: reviews
+        type: object
+        list:
+          collapsible: { collapsed: true, summary: "{name}" }
+        fields:
+          - { name: name, type: string }
+          - { name: role, type: string }
+          - { name: content, type: text }
+          - { name: date, type: string }
+          - { name: avatar, type: image, options: { media: uploads } }
+      - name: comparison
+        type: object
         list: true
         fields:
-          - {name: question, type: string}
-          - {name: answer, type: text}
+          - { name: feature, type: string }
+          - { name: groupBuy, type: text }
+          - { name: direct, type: text }
+      - name: limitations
+        type: object
+        list: true
+        fields:
+          - { name: title, type: string }
+          - { name: desc, type: text }
+          - { name: limitLabel, type: string }
+      - name: tools
+        type: object
+        list: true
+        fields:
+          - { name: name, type: string }
+          - { name: color, type: string }
+      - { name: problemBullets, type: string, list: true }
+      - { name: solutionBullets, type: string, list: true }
   - name: privacy
     label: Privacy Policy
     type: file
     path: content/privacy.json
     format: json
     fields:
-      - {name: title, type: string}
-      - {name: seoTitle, type: string}
-      - {name: seoDescription, type: text}
-      - {name: html, type: rich-text, options: {format: html, media: uploads, switcher: false}}
+      - { name: seoTitle, type: string }
+      - { name: seoDescription, type: text }
+      - { name: html, type: rich-text, options: { format: html, media: uploads, switcher: false } }
