@@ -1,13 +1,7 @@
 import { motion } from "motion/react";
 
-import { Twitter, Facebook, Linkedin, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { SITE_CONFIG, site } from "./cmsData";
-
-const social = [
-  { Icon: Twitter, label: "Twitter", href: "#" },
-  { Icon: Facebook, label: "Facebook", href: "#" },
-  { Icon: Linkedin, label: "LinkedIn", href: "#" },
-] as const;
 
 export function Footer() {
   return (
@@ -63,7 +57,7 @@ export function Footer() {
         <div className="mt-10 border-t border-white/10 pt-6">
           <div className="flex flex-col items-center justify-center gap-3 text-center">
             <p className="text-[11px] font-black uppercase tracking-[0.22em] text-white/45">
-              © {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.
+              © {new Date().getFullYear()} {SITE_CONFIG.name}. {site.uiLabels.footerCopyrightSuffix}
             </p>
           </div>
         </div>
