@@ -18,7 +18,7 @@ export const SITE_CONFIG={
 export const brand={name:site.brand,url:site.siteUrl,description:site.homeDescription};
 export const hero={
   badge:site.heroBadge,
-  headlineBefore:site.uiLabels.heroTitlePrefix,
+  headlineBefore:site.heroTitle,
   headlineAccent:site.uiLabels.heroTitleAccent,
   subhead:site.heroDescription,
   trustLine:site.heroTrust,
