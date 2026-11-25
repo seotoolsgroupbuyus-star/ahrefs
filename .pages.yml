@@ -140,6 +140,7 @@ content:
       - { name: themeColor, type: string }
       - { name: ogImage, type: image, options: { media: uploads } }
       - { name: paymentBaseUrl, type: string }
+      - { name: articleOrder, label: Article display and related-link order, type: string, list: true }
       - { name: brandMarkImage, label: Optional brand logo image, type: image, options: { media: logos } }
       - { name: favicon, label: Favicon, type: image, options: { media: uploads } }
       - { name: seoKeywords, type: string, list: true }
