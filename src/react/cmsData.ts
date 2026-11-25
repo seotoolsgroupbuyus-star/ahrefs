@@ -43,3 +43,5 @@ export function formatPlanDisplayAmount(amount:number,currency:'usd'|'pkr'){
  return Number.isInteger(amount)?String(amount):amount.toFixed(2);
 }
 export function planForProjects(count:number):string{return count<=1?'lite':count<=5?'standard':'power'}
+
+export const springSnappy={type:'spring' as const,stiffness:380,damping:28};
