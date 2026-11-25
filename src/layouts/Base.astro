@@ -1,6 +1,7 @@
 ---
 import {site,absolute} from '../lib/data.js';
 import '../styles/reference-home.css';
+import articleStyles from '../styles/main.css?url';
 import {Navbar} from '../react/Navbar';
 import {Footer} from '../react/Footer';
 import {WhatsAppChatBox} from '../react/WhatsAppChatBox';
@@ -11,6 +12,7 @@ const schema={'@context':'https://schema.org','@type':'WebSite',name:site.brand,
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="theme-color" content={site.themeColor||"#1A284D"}/>
+{Astro.url.pathname !== '/' && Astro.url.pathname !== '/privacy/' && <link rel="stylesheet" href={articleStyles}/>}
 <title>{title}</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/>
 {site.seoKeywords?.length>0&&<meta name="keywords" content={site.seoKeywords.join(', ')}/>}
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>{site.googleSiteVerification&&<meta name="google-site-verification" content={site.googleSiteVerification}/>}
