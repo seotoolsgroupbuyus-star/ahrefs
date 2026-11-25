@@ -139,6 +139,9 @@ function SecurityBadges({ className }: { className?: string }) {
 }
 
 function TopHero() {
+  const accent = site.uiLabels.heroTitleAccent;
+  const accentAt = site.heroTitle.toLowerCase().lastIndexOf(accent.toLowerCase());
+  const headlineBefore = accentAt < 0 ? site.heroTitle : site.heroTitle.slice(0,accentAt);
   return (
     <section
       className="relative flex items-center overflow-hidden bg-[#1A284D] px-6 pt-32 pb-24 text-white"
@@ -167,9 +170,9 @@ function TopHero() {
             </div>
 
             <h1 className="mb-8 text-5xl font-black leading-none tracking-tighter md:text-8xl">
-              {site.heroTitle.slice(0,site.heroTitle.toLowerCase().lastIndexOf('at 90% off')) || site.uiLabels.heroTitlePrefix}{" "}
+              {headlineBefore}{" "}
               <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-                {site.uiLabels.heroTitleAccent}
+                {accentAt >= 0 ? accent : ""}
               </span>
             </h1>
 
