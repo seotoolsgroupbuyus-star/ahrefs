@@ -68,6 +68,10 @@ content:
           - { name: articleAsideTitle, type: string }
           - { name: articleAsideDescription, type: text }
           - { name: articleAsideButton, type: string }
+          - { name: articleCtaTitle, type: string }
+          - { name: articleCtaLead, type: text }
+          - { name: articleCtaButton, type: string }
+          - { name: articleCtaTrust, type: string }
           - { name: relatedReadingTitle, type: string }
           - { name: headerButton, type: string }
           - { name: footerSupportLabel, type: string }
