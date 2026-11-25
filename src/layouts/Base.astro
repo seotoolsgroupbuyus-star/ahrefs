@@ -18,7 +18,7 @@ const schema={'@context':'https://schema.org','@type':'WebSite',name:site.brand,
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>{site.googleSiteVerification&&<meta name="google-site-verification" content={site.googleSiteVerification}/>}
 <meta property="og:type" content={type}/><meta property="og:site_name" content={site.brand}/><meta property="og:locale" content="en_US"/><meta property="og:url" content={canonical}/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:image" content={absolute(image)}/>
 <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content={absolute(image)}/><meta name="publisher" content={site.brand}/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/>
-<link rel="icon" href="/og.svg" type="image/svg+xml"/><link rel="apple-touch-icon" href={site.ogImage||"/og.svg"}/><script type="application/ld+json" set:html={JSON.stringify(schema)}/>{structuredData.map(item=><script type="application/ld+json" set:html={JSON.stringify(item)}/>)}
+<link rel="icon" href={site.favicon||site.ogImage||"/og.svg"} type="image/svg+xml"/><link rel="apple-touch-icon" href={site.ogImage||"/og.svg"}/><script type="application/ld+json" set:html={JSON.stringify(schema)}/>{structuredData.map(item=><script type="application/ld+json" set:html={JSON.stringify(item)}/>)}
 </head><body class:list={[Astro.url.pathname==='/'?'is-home':'is-article-page','min-h-screen','flex','flex-col']}>
   <Navbar initialPath={Astro.url.pathname} client:load />
   <main class="flex-grow"><slot/></main>
