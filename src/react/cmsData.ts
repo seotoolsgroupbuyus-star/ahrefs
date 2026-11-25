@@ -1,4 +1,5 @@
-import site from '../../content/site.json';
+import siteData from '../../content/site.json';
+export const site=siteData;
 
 export type BillingCycle = 'monthly' | 'annual';
 export type MarketingPlan = {
