@@ -114,6 +114,9 @@ content:
           - { name: authorEditorialLabel, type: string }
           - { name: authorWrittenBy, type: string }
       - { name: siteUrl, type: string }
+      - { name: googleSiteVerification, type: string }
+      - { name: themeColor, type: string }
+      - { name: ogImage, type: image, options: { media: uploads } }
       - { name: paymentBaseUrl, type: string }
       - { name: seoKeywords, type: string, list: true }
       - name: contentAuthors
