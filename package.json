@@ -8,7 +8,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "verify": "node scripts/verify.mjs",
-    "verify:source-parity": "node scripts/verify.mjs && node scripts/verify-word-parity.mjs && node scripts/verify-table-data.mjs"
+    "verify:source-parity": "node scripts/verify.mjs && node scripts/verify-word-parity.mjs && node scripts/verify-table-data.mjs",
+    "verify:cms": "node scripts/verify-cms-coverage.mjs",
+    "test:cms-edit": "node scripts/test-cms-edit.mjs"
   },
   "dependencies": {
     "astro": "^5.16.0",
