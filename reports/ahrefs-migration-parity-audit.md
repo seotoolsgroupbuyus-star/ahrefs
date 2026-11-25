@@ -42,4 +42,10 @@
 - **Exact non-text asset bytes:** the 27 archived article image references resolve in the built output; byte-level image identity with the original live server was not measured.
 - **JSX dynamic blocks:** 823 dynamic JSX cases were not individually matched with the strict literal punctuation checker, although normalized word/order, links and data structures have dedicated checks.
 
+## Ongoing Pages CMS editing and audit workflow
+
+- Normal GitHub push verification checks content integrity, internal links, CMS bindings, edited-page rendering, generated SEO tags/sitemap, Astro build. It does **not** require content to remain word-for-word equal to the historical Next.js snapshot after an editor intentionally changes content.
+- Strict archived-source comparisons remain available through the **Check original ZIP word-by-word parity** manually dispatched GitHub Action. These checks passed during this migration audit, but will intentionally flag later editorial updates when rerun.
+- Existing hero CTA URLs are CMS-editable and may route to a valid local section or HTTPS URL. Pricing Buy Now destinations are still enforced to the direct `pay.aherfsgroupbuy.com` root.
+
 No original SEO titles/descriptions or pricing were changed by this audit.
