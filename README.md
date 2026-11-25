@@ -11,7 +11,18 @@ Astro static website migrated from the supplied Next.js project and uploaded to 
 - Astro static pages, sitemap, robots and Cloudflare Pages output configuration
 - GitHub Actions CI: `npm run verify` and `npm run build` passed after upload
 
-## Cloudflare Pages setup
+## Cloudflare Workers Static Assets (current deployment)
+
+The existing Cloudflare project is a **Worker with Git-based Builds**, not a Pages project. This is supported for an Astro static website. The root `wrangler.jsonc` has been updated to use `assets.directory: "./dist"`, with no Worker `main` script required.
+
+Use the existing Cloudflare Worker build settings:
+- **Build command:** `npm run build`
+- **Deploy command:** `npx wrangler deploy`
+- **Root directory:** `/`
+
+Wrangler now uploads `dist/` as Worker Static Assets. Do not use `wrangler pages deploy` or set up another Pages project for this Worker. The `name` in `wrangler.jsonc` is `ahrefs-astro-cms`; make sure this is the intended Worker name or change it to the existing Worker's name before publishing to avoid creating a different service. After a successful deploy, test the Worker URL first and then attach the production domain.
+
+## Alternative: Cloudflare Pages (not used for current Worker deployment)
 
 1. In Cloudflare, open **Workers & Pages → Create → Pages → Connect to Git**.
 2. Select `seotoolsgroupbuyus-star/ahrefs`, branch `main`.
