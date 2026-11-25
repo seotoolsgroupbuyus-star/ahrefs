@@ -15,6 +15,7 @@ jobs:
       - run: npm run verify
       - run: npm run verify:source-parity
       - run: node scripts/verify-original-page-seo.mjs
+      - run: node scripts/verify-literal-copy.mjs
       - run: npm run verify:cms
       - run: npm run test:cms-edit
       - run: node scripts/verify-home-content-parity.mjs
