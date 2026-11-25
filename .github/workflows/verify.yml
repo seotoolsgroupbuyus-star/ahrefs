@@ -13,4 +13,5 @@ jobs:
           node-version: '22'
       - run: npm install
       - run: npm run verify
+      - run: npm run verify:source-parity
       - run: npm run build
