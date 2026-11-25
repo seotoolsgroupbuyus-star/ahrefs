@@ -44,25 +44,7 @@ import type { MarketingPlan } from "./cmsData";
 /** Match reference `App.tsx` scroll reveal: animate once per page load. */
 const viewOnce = { once: true } as const;
 
-const FEATURE_INFO: Record<string, string> = {
-  "Ahrefs SEO Toolbar": "Browser-based metrics (DR/UR) and quick checks while you browse.",
-  "SERP Metrics (DR/UR)": "Show authority-style metrics directly on search results pages.",
-  "Backlink Counts": "Quick backlink totals for domains/pages (summary-level view).",
-  "Keyword Difficulty": "Difficulty estimate for ranking—useful for quick keyword triage.",
-  "Chrome Extension": "Use the toolbar inside Chrome for on-page + SERP overlays.",
-  "Basic Support": "Standard help response—best for casual or learning use.",
-  "Site Explorer Access": "Domain and page research (traffic, backlinks, top pages).",
-  "Keywords Explorer": "Keyword ideas + volume/difficulty style metrics for planning.",
-  "30 Credits / Day": "Daily quota to keep shared access stable across all members.",
-  "Rank Tracker": "Track selected keywords over time (usually limited vs retail).",
-  "Support Included": "Support channel included for setup and access issues.",
-  "Everything in Standard": "Includes the full feature set from the Standard plan.",
-  "20+ Premium SEO Tools": "Access to extra SEO + content + design tools inside the same bundle.",
-  "Canva Pro & Grammarly": "Design and writing helpers bundled into the toolkit.",
-  "Indexification API": "Indexing helper access for faster discovery (fair-use rules apply).",
-  "VIP Discord Access": "Community + updates channel for help and announcements.",
-  "24/7 Live Chat": "Faster support availability for urgent access problems.",
-};
+const FEATURE_INFO: Record<string,string> = Object.fromEntries(site.featureDescriptions.map(item=>[item.name,item.description]));
 
 function FeatureTooltip({ title, body }: { title: string; body: string }) {
   return (
