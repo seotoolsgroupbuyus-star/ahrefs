@@ -12,10 +12,10 @@ import { Logo } from "./Logo";
 
 const HOME_SECTIONS = site.menu.filter(item=>item.url.includes("#")).map(item=>({label:item.label,hash:item.url.split("#")[1]}));
 
-export function Navbar() {
+export function Navbar({initialPath="/"}:{initialPath?:string}) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [pathname, setPathname] = useState("/");
+  const [pathname, setPathname] = useState(initialPath);
   useEffect(() => { setPathname(window.location.pathname); }, []);
 
   useEffect(() => {
