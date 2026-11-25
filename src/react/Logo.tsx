@@ -21,13 +21,13 @@ export function Logo({
             onDark ? "bg-blue-600" : "bg-primary"
           )}
         >
-          <svg
+          {site.brandMarkImage ? <img src={site.brandMarkImage} alt="" className="h-7 w-7 object-contain" /> : <svg
             viewBox="0 0 24 24"
             className="h-7 w-7 fill-current text-white"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path d="M2 18h3V8H2v10zm5 0h3V4H7v14zm5 0h3v-7h-3v7zm5 0h3v-4h-3v4z" />
-          </svg>
+          </svg>}
           <div className="absolute inset-0 translate-x-[-100%] bg-gradient-to-tr from-white/0 via-white/10 to-white/0 transition-transform duration-1000 group-hover:translate-x-[100%]" />
         </div>
         <div
