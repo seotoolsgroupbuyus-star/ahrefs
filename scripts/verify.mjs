@@ -83,12 +83,15 @@ for(const file of publicFiles){
 }
 const layoutSource=fs.readFileSync('src/layouts/Base.astro','utf8');
 const homeSource=fs.readFileSync('src/pages/index.astro','utf8');
-assert(layoutSource.includes('href={site.paymentBaseUrl}'),'Header Get Started must use the payment subdomain');
+assert(fs.readFileSync('src/react/Navbar.tsx','utf8').includes('href={site.paymentBaseUrl}'),'Original React header must open payment subdomain');
 assert(fs.readFileSync('src/react/ReferenceStyleHome.tsx','utf8').includes('href={plan.buyUrl}'),'Every original React plan CTA must use editable buyUrl');
 assert(site.plans.every(plan=>plan.buyUrl===site.paymentBaseUrl),'All plan CTAs must match payment homepage');
 assert(site.primaryCtaUrl==='/#pricing','Hero View Plans should navigate to pricing, not payment');
 
 assert(homeSource.includes('<ReferenceStyleHome client:load />'),'Original React homepage must hydrate');
+assert(layoutSource.includes('<Navbar client:load />'),'Original React Navbar missing');
+assert(layoutSource.includes('<Footer client:visible />'),'Original React Footer missing');
+assert(layoutSource.includes('<WhatsAppChatBox client:load />'),'Original React WhatsApp missing');
 assert(fs.readFileSync('src/react/ReferenceStyleHome.tsx','utf8').includes('<ToolsModal'),'Original catalog modal missing');
 assert(site.tools.every(t=>typeof t.name==='string'),'Featured tool name missing');
 if(errors.length){for(const e of errors)console.error('FAIL '+e);process.exit(1)}
