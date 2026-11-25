@@ -95,6 +95,22 @@ content:
           - { name: toolbarSocialProof, type: string }
           - { name: toolbarMockUrl, type: string }
           - { name: toolbarMockMetrics, type: string, list: true }
+          - { name: chatTitle, type: string }
+          - { name: chatSubtitle, type: string }
+          - { name: chatDescription, type: text }
+          - { name: chatPlaceholder, type: string }
+          - { name: chatOpenButton, type: string }
+          - { name: chatNeedHelp, type: string }
+          - { name: chatButtonLabel, type: string }
+          - { name: chatCloseLabel, type: string }
+          - { name: chatOpenLabel, type: string }
+          - { name: chatDefaultMessage, type: text }
+          - { name: footerPagesTitle, type: string }
+          - { name: footerSupportTitle, type: string }
+          - { name: footerSupportDescription, type: text }
+          - { name: footerCopyrightSuffix, type: string }
+          - { name: logoTop, type: string }
+          - { name: logoBottom, type: string }
       - { name: siteUrl, type: string }
       - { name: paymentBaseUrl, type: string }
       - { name: seoKeywords, type: string, list: true }
