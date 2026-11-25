@@ -10,7 +10,7 @@
   "primaryCtaText": "View Plans & Pricing",
   "primaryCtaUrl": "/#pricing",
   "secondaryCtaText": "How it Works",
-  "secondaryCtaUrl": "/#how-it-works",
+  "secondaryCtaUrl": "/#limitations",
   "menu": [
     {
       "label": "Home",
@@ -569,7 +569,7 @@
     "pkrLabel": "PKR",
     "popularRibbon": "Recommended for you",
     "includedToolsLabel": "Included tools",
-    "planButton": "Get Started",
+    "planButton": "Buy Now",
     "copyCouponLabel": "Copy Code",
     "copiedCouponLabel": "Copied",
     "comparisonCaption": "Source website comparison data",
@@ -592,7 +592,32 @@
     "mobileMenu": "Menu",
     "publishedLabel": "Published",
     "updatedLabel": "Updated",
-    "bylineLabel": "By"
+    "bylineLabel": "By",
+    "openDetailedComparison": "Open detailed comparison table",
+    "detailedComparisonTitle": "Detailed Comparison",
+    "detailedComparisonFeatures": [
+      "SEO Toolbar",
+      "Site Explorer",
+      "Keywords Explorer",
+      "30 Credits/Day",
+      "20+ Tools"
+    ],
+    "detailedComparisonClose": "Close",
+    "riskBadge": "100% Risk-Free Guarantee",
+    "riskTitle": "Cheapest Options, Zero Hidden Costs.",
+    "riskDescription": "Most group buy providers hide costs or limit access after you pay. We believe in 100% transparency.",
+    "yearlyWhyTitle": "Why Choose Yearly?",
+    "yearlyWhyDescription": "Commit to your growth and save compared to monthly billing.",
+    "yearlyWhyLink": "Read our Transparent Limitations",
+    "toolbarButton": "Start Using Ahrefs Bar",
+    "toolbarSocialProof": "Joined by 12,000+ SEOs",
+    "toolbarMockUrl": "google.com/search?q=ahrefs+group+buy",
+    "toolbarMockMetrics": [
+      "DR: 92",
+      "UR: 45",
+      "Backlinks: 45.2K",
+      "Traffic: 1.2M"
+    ]
   },
   "seoKeywords": [
     "Ahrefs group buy",
