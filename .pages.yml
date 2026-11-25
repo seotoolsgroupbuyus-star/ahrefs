@@ -7,6 +7,16 @@ media:
     input: public/images
     output: /images
     categories: [image]
+  - name: logos
+    label: Tool and brand logos
+    input: public/logos
+    output: /logos
+    categories: [image]
+  - name: avatars
+    label: Homepage profile avatars
+    input: public/avatars
+    output: /avatars
+    categories: [image]
 content:
   - name: articles
     label: Articles
@@ -120,11 +130,26 @@ content:
           - { name: toolsSearchPlaceholder, type: string }
           - { name: seePricing, type: string }
           - { name: heroTitleAccent, type: string }
+          - { name: limitationsQuestion, type: string }
+          - { name: limitationsSupportText, type: string }
+          - { name: writeReviewLabel, type: string }
+          - { name: writeReviewUrl, type: string }
+          - { name: reviewPlatformLabel, type: string }
+          - { name: yearlySavingsLabel, type: string }
+          - { name: moreToolsLabel, type: string }
+          - { name: featureTooltipFallback, type: string }
+          - { name: heroTitlePrefix, type: string }
+          - { name: detectedCountryLabel, type: string }
+          - { name: articleAsideUrl, type: string }
+          - { name: homeNavLabel, type: string }
+          - { name: closeMenu, type: string }
       - { name: siteUrl, type: string }
       - { name: googleSiteVerification, type: string }
       - { name: themeColor, type: string }
       - { name: ogImage, type: image, options: { media: uploads } }
       - { name: paymentBaseUrl, type: string }
+      - { name: brandMarkImage, label: Optional brand logo image, type: image, options: { media: logos } }
+      - { name: favicon, label: Favicon, type: image, options: { media: uploads } }
       - { name: seoKeywords, type: string, list: true }
       - name: contentAuthors
         label: Article authors
@@ -162,7 +187,7 @@ content:
           - { name: label, type: string }
           - { name: url, type: string }
       - { name: toolStrip, type: string, list: true }
-      - { name: heroAvatars, type: image, list: true, options: { media: uploads } }
+      - { name: heroAvatars, type: image, list: true, options: { media: avatars } }
       - name: plans
         type: object
         list:
@@ -214,7 +239,7 @@ content:
         fields:
           - { name: name, type: string }
           - { name: color, type: string }
-          - { name: logo, type: image, options: { media: uploads } }
+          - { name: logo, type: image, options: { media: logos } }
       - { name: problemBullets, type: string, list: true }
       - { name: solutionBullets, type: string, list: true }
       - name: homeCopy
