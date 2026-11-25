@@ -123,15 +123,15 @@ function SecurityBadges({ className }: { className?: string }) {
     >
       <div className="flex items-center gap-2">
         <ShieldCheck className="h-5 w-5 text-green-600" />
-        <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">SSL Secure</span>
+        <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">{site.uiLabels.trustStrip[0]?.replace(/^✓\s*/, '')}</span>
       </div>
       <div className="flex items-center gap-2">
         <Lock className="h-5 w-5 text-blue-600" />
-        <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Encrypted Payment</span>
+        <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">{site.uiLabels.trustStrip[1]?.replace(/^✓\s*/, '')}</span>
       </div>
       <div className="flex items-center gap-2">
         <CheckCircle2 className="h-5 w-5 text-blue-600" />
-        <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Verified Access</span>
+        <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">{site.uiLabels.trustStrip[2]?.replace(/^✓\s*/, '')}</span>
       </div>
     </div>
   );
@@ -180,7 +180,7 @@ function TopHero() {
               <motion.button
                 type="button"
                 whileTap={{ scale: 0.95 }}
-                onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => window.location.assign(site.primaryCtaUrl)}
                 className="rounded-2xl bg-blue-600 px-10 py-5 text-lg font-black text-white shadow-2xl shadow-blue-600/20 transition-all hover:scale-105 hover:bg-blue-700 active:scale-95"
               >
                 {site.primaryCtaText}
@@ -188,7 +188,7 @@ function TopHero() {
               <motion.button
                 type="button"
                 whileTap={{ scale: 0.95 }}
-                onClick={() => document.getElementById("limitations")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => window.location.assign(site.secondaryCtaUrl)}
                 className="rounded-2xl border border-white/10 bg-white/5 px-10 py-5 text-lg font-black text-white transition-all hover:bg-white/10"
               >
                 {site.secondaryCtaText}
@@ -196,11 +196,10 @@ function TopHero() {
             </div>
 
             <div className="mb-16 flex flex-wrap justify-center gap-6">
-              {[
-                { Icon: ShieldCheck, t: "Official Data", c: "text-green-400" },
-                { Icon: Zap, t: "Instant Setup", c: "text-yellow-400" },
-                { Icon: Lock, t: "Private Projects", c: "text-blue-400" },
-              ].map(({ Icon, t, c }) => (
+              {site.uiLabels.heroChips.map((t, index) => {
+                 const icons=[ShieldCheck,Zap,Lock], colors=["text-green-400","text-yellow-400","text-blue-400"];
+                 const Icon=icons[index%icons.length], c=colors[index%colors.length];
+                 return (
                 <div
                   key={t}
                   className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2"
@@ -208,19 +207,19 @@ function TopHero() {
                   <Icon className={cn("h-5 w-5", c)} />
                   <span className="text-sm font-bold">{t}</span>
                 </div>
-              ))}
+              )})}
             </div>
 
             <div className="flex flex-col items-center gap-8">
               <div className="flex items-center gap-4 rounded-[2rem] border border-white/10 bg-white/5 px-8 py-5 backdrop-blur-md">
                 <div className="flex -space-x-3">
-                  {["a1", "a2", "a3", "a4", "a5"].map((id) => (
+                  {site.heroAvatars.map((avatar, id) => (
                     <div
                       key={id}
                       className="h-10 w-10 overflow-hidden rounded-full border-2 border-[#1A284D] bg-gray-200 shadow-lg"
                     >
                       <img
-                        src={`/avatars/${id}.svg`}
+                        src={avatar}
                         alt={`Illustrative customer avatar ${id} for AhrefsGroupBuy social proof`}
                         referrerPolicy="no-referrer"
                       />
@@ -250,7 +249,7 @@ function ToolStrip() {
     <section className="border-y border-slate-200 bg-white py-10" aria-label="Included tools">
       <div className="mx-auto max-w-7xl px-6">
         <p className="mb-6 text-center text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-          Included in your {brand.name} access
+          {site.uiLabels.toolStripHeading}
         </p>
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {homeToolStrip.map((label, i) => (
@@ -342,7 +341,7 @@ function RefPricing() {
                       : "text-slate-500 hover:text-[#1A284D]"
                   )}
                 >
-                  Monthly
+                  {site.uiLabels.monthlyLabel}
                 </motion.button>
                 <motion.button
                   type="button"
@@ -355,7 +354,7 @@ function RefPricing() {
                       : "text-slate-500 hover:text-[#1A284D]"
                   )}
                 >
-                  Yearly <span className="rounded-md bg-green-100 px-2 py-0.5 text-[10px] text-green-600">-20%</span>
+                  {site.uiLabels.yearlyLabel.replace(/\s*-?20%.*/, '')} <span className="rounded-md bg-green-100 px-2 py-0.5 text-[10px] text-green-600">-20%</span>
                 </motion.button>
               </div>
               <div className="flex flex-col items-center gap-2">
@@ -369,7 +368,7 @@ function RefPricing() {
                       currency === "usd" ? "bg-[#FF5C00] text-white" : "text-slate-500 hover:text-[#FF5C00]"
                     )}
                   >
-                    USD
+                    {site.uiLabels.usdLabel}
                   </motion.button>
                   <motion.button
                     type="button"
@@ -380,7 +379,7 @@ function RefPricing() {
                       currency === "pkr" ? "bg-[#FF5C00] text-white" : "text-slate-500 hover:text-[#FF5C00]"
                     )}
                   >
-                    PKR
+                    {site.uiLabels.pkrLabel}
                   </motion.button>
                 </div>
                 {detectedCountry && (
@@ -413,7 +412,7 @@ function RefPricing() {
               >
                 {isRecommended && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-[#FF5C00] px-6 py-1.5 text-[10px] font-black uppercase tracking-widest text-white shadow-lg shadow-orange-200">
-                    Recommended for you
+                    {site.uiLabels.popularRibbon}
                   </div>
                 )}
                 <div className="mb-8">
@@ -455,7 +454,7 @@ function RefPricing() {
                             <span className="ml-2 text-[11px] font-black text-[#FF5C00]">({plan.tools.length})</span>
                             <span className="absolute left-1/2 top-1/2 z-30 hidden w-[min(420px,calc(100vw-3rem))] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl group-hover/feat:block">
                               <span className="mb-2 block text-[10px] font-black uppercase tracking-widest text-[#1A284D]">
-                                Included tools ({plan.tools.length})
+                                {site.uiLabels.includedToolsLabel} ({plan.tools.length})
                               </span>
                               <div className="max-h-44 overflow-auto overscroll-contain pr-1 text-[10px] font-bold leading-relaxed text-slate-600">
                                 <div className="grid grid-cols-1 gap-y-1">
@@ -539,7 +538,7 @@ function RefPricing() {
               )}
             >
               {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-              {copied ? "Copied!" : "Copy Code"}
+              {copied ? site.uiLabels.copiedCouponLabel : site.uiLabels.copyCouponLabel}
             </motion.button>
           </motion.div>
         </div>
@@ -561,7 +560,7 @@ function RefPricing() {
                 className="relative flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-[3rem] bg-white shadow-2xl"
               >
                 <div className="flex items-center justify-between border-b border-slate-100 p-8">
-                  <h3 className="text-2xl font-black text-[#1A284D]">Detailed Comparison</h3>
+                  <h3 className="text-2xl font-black text-[#1A284D]">{site.uiLabels.detailedComparisonTitle}</h3>
                   <button
                     type="button"
                     onClick={() => setIsModalOpen(false)}
@@ -574,7 +573,7 @@ function RefPricing() {
                   <table className="w-full border-collapse text-left">
                     <thead>
                       <tr>
-                        <th className="py-4 text-sm font-black uppercase tracking-widest text-slate-400">Feature</th>
+                        <th className="py-4 text-sm font-black uppercase tracking-widest text-slate-400">{site.uiLabels.comparisonFeatureHeader}</th>
                         {MARKETING_PLANS.map((p) => (
                           <th key={p.id} className="px-4 py-4 text-center text-sm font-black uppercase tracking-widest text-[#1A284D]">
                             {p.name}
@@ -583,7 +582,7 @@ function RefPricing() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
-                      {["SEO Toolbar", "Site Explorer", "Keywords Explorer", "30 Credits/Day", "20+ Tools"].map(
+                      {site.uiLabels.detailedComparisonFeatures.map(
                         (feature) => (
                           <tr key={feature} className="hover:bg-slate-50">
                             <td className="py-4 text-sm font-bold text-slate-600">{feature}</td>
@@ -615,7 +614,7 @@ function RefPricing() {
                     onClick={() => setIsModalOpen(false)}
                     className="rounded-xl bg-[#1A284D] px-8 py-3 text-sm font-black uppercase tracking-widest text-white hover:bg-[#15203d]"
                   >
-                    Close
+                    {site.uiLabels.detailedComparisonClose}
                   </button>
                 </div>
               </motion.div>
@@ -635,28 +634,28 @@ function RefPricing() {
             <div>
               <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/20 px-4 py-2 text-blue-300">
                 <ShieldCheck className="h-4 w-4" />
-                <span className="text-[10px] font-black uppercase tracking-widest">100% Risk-Free Guarantee</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">{site.uiLabels.riskBadge}</span>
               </div>
               <h3 className="mb-8 text-3xl font-black tracking-tight md:text-5xl">
-                Cheapest Options, <br />
-                <span className="text-blue-400">Zero Hidden Costs.</span>
+                {site.uiLabels.riskTitle.split(',')[0]}, <br />
+                <span className="text-blue-400">{site.uiLabels.riskTitle.split(',').slice(1).join(',').trim()}</span>
               </h3>
               <p className="mb-10 text-lg font-medium leading-relaxed text-blue-100/70">
-                Most group buy providers hide costs or limit access after you pay. We believe in 100% transparency.
+                {site.uiLabels.riskDescription}
               </p>
               <SecurityBadges className="opacity-100 grayscale-0" />
             </div>
             <div className="rounded-[3rem] border border-white/10 bg-white/5 p-10 backdrop-blur-sm">
-              <h4 className="mb-6 text-2xl font-black">Why Choose Yearly?</h4>
+              <h4 className="mb-6 text-2xl font-black">{site.uiLabels.yearlyWhyTitle}</h4>
               <p className="mb-8 font-medium text-blue-100/70">
-                Commit to your growth and save compared to monthly billing.
+                {site.uiLabels.yearlyWhyDescription}
               </p>
               <button
                 type="button"
                 onClick={() => document.getElementById("limitations")?.scrollIntoView({ behavior: "smooth" })}
                 className="group flex w-full items-center justify-center gap-2 text-sm font-black text-blue-400 transition-all hover:text-blue-300"
               >
-                Read our Transparent Limitations <ArrowRight className="h-4 w-4 group-hover:translate-x-1" />
+                {site.uiLabels.yearlyWhyLink} <ArrowRight className="h-4 w-4 group-hover:translate-x-1" />
               </button>
             </div>
           </div>
@@ -908,11 +907,11 @@ function ComparisonSection() {
                 </div>
                 <div className="mt-4 grid gap-4">
                   <div className="rounded-2xl border border-orange-100 bg-orange-50/40 p-4">
-                    <p className="text-[11px] font-black uppercase tracking-widest text-[#FF5C00]">{brand.name} (Group Buy)</p>
+                    <p className="text-[11px] font-black uppercase tracking-widest text-[#FF5C00]">{site.uiLabels.comparisonGroupBuyHeader}</p>
                     <p className="mt-2 text-sm font-medium leading-relaxed text-slate-700">{row.groupBuy}</p>
                   </div>
                   <div className="rounded-2xl border border-slate-200 bg-slate-50/60 p-4">
-                    <p className="text-[11px] font-black uppercase tracking-widest text-slate-500">Ahrefs Direct</p>
+                    <p className="text-[11px] font-black uppercase tracking-widest text-slate-500">{site.uiLabels.comparisonDirectHeader}</p>
                     <p className="mt-2 text-sm font-medium leading-relaxed text-slate-600">{row.direct}</p>
                   </div>
                 </div>
@@ -1037,17 +1036,17 @@ function AhrefsBarFeatures() {
               </motion.button>
               <div className="flex items-center gap-4 font-bold text-blue-100">
                 <div className="flex -space-x-3">
-                  {["a1", "a2", "a3", "a4"].map((id) => (
+                  {site.heroAvatars.slice(0,4).map((avatar,id) => (
                     <img
                       key={id}
-                      src={`/avatars/${id}.svg`}
+                      src={avatar}
                       className="h-10 w-10 rounded-full border-2 border-blue-600"
                       alt={`Illustrative SEO user avatar ${id} next to Joined by thousands of SEOs message`}
                       referrerPolicy="no-referrer"
                     />
                   ))}
                 </div>
-                <span className="text-sm">Joined by 12,000+ SEOs</span>
+                <span className="text-sm">{site.uiLabels.toolbarSocialProof}</span>
               </div>
             </div>
           </motion.div>
@@ -1068,7 +1067,7 @@ function AhrefsBarFeatures() {
                     <div className="h-3 w-3 rounded-full bg-green-400" />
                   </div>
                   <div className="flex h-8 flex-1 items-center truncate rounded-xl bg-gray-100 px-4 text-[10px] font-medium text-gray-400">
-                    google.com/search?q=ahrefs+group+buy
+                    {site.uiLabels.toolbarMockUrl}
                   </div>
                 </div>
                 <div className="space-y-10 p-8">
@@ -1081,16 +1080,16 @@ function AhrefsBarFeatures() {
                       </div>
                       <div className="flex flex-wrap gap-3 pt-2">
                         <div className="rounded-lg bg-blue-600 px-3 py-1.5 text-[10px] font-black text-white shadow-lg shadow-blue-200">
-                          DR: 92
+                          {site.uiLabels.toolbarMockMetrics[0]}
                         </div>
                         <div className="rounded-lg bg-orange-500 px-3 py-1.5 text-[10px] font-black text-white shadow-lg shadow-orange-200">
-                          UR: 45
+                          {site.uiLabels.toolbarMockMetrics[1]}
                         </div>
                         <div className="rounded-lg bg-slate-800 px-3 py-1.5 text-[10px] font-black text-white shadow-lg shadow-slate-200">
-                          Backlinks: 45.2K
+                          {site.uiLabels.toolbarMockMetrics[2]}
                         </div>
                         <div className="rounded-lg bg-green-500 px-3 py-1.5 text-[10px] font-black text-white shadow-lg shadow-green-200">
-                          Traffic: 1.2M
+                          {site.uiLabels.toolbarMockMetrics[3]}
                         </div>
                       </div>
                     </div>
@@ -1121,10 +1120,10 @@ function LimitationsSection() {
         >
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/20 px-4 py-2 text-blue-200">
             <AlertCircle className="h-4 w-4" />
-            <span className="text-[10px] font-black uppercase tracking-widest">Transparency First</span>
+            <span className="text-[10px] font-black uppercase tracking-widest">{site.homeCopy.limitationsEyebrow}</span>
           </div>
           <h2 className="mb-8 text-4xl font-black tracking-tight md:text-6xl">
-            Transparent Limitations We Keep it Honest
+            {site.homeCopy.limitationsTitle}
           </h2>
           <p className="text-xl font-medium leading-relaxed text-blue-100/70">
             {site.homeCopy.limitationsDescription}
@@ -1167,7 +1166,7 @@ function LimitationsSection() {
             whileTap={{ scale: 0.97 }}
             className="shrink-0 rounded-2xl bg-white px-10 py-5 text-lg font-black text-blue-600 shadow-xl transition-transform hover:scale-105"
           >
-            WhatsApp support
+            {site.uiLabels.whatsappSupport}
           </motion.a>
         </motion.div>
       </div>
@@ -1194,7 +1193,7 @@ function TrustpilotReviews() {
               ))}
             </div>
             <p className="text-sm font-medium text-gray-500">
-              Based on <span className="font-bold text-gray-800 underline">1,428 reviews</span>
+              {site.homeCopy.reviewsCount}
             </p>
             <div className="mt-4 flex items-center justify-center gap-2 md:justify-start">
               <Star className="h-5 w-5 fill-current text-[#00b67a]" />
