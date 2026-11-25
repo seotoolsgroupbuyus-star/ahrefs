@@ -617,7 +617,23 @@
       "UR: 45",
       "Backlinks: 45.2K",
       "Traffic: 1.2M"
-    ]
+    ],
+    "chatTitle": "WhatsApp support",
+    "chatSubtitle": "Chat with us",
+    "chatDescription": "Send a quick message and we'll reply on WhatsApp.",
+    "chatPlaceholder": "Type your message...",
+    "chatOpenButton": "Open WhatsApp Chat",
+    "chatNeedHelp": "Need help?",
+    "chatButtonLabel": "Chat on WhatsApp",
+    "chatCloseLabel": "Close WhatsApp chat box",
+    "chatOpenLabel": "Open WhatsApp chat box",
+    "chatDefaultMessage": "Hi! I need help with AhrefsGroupBuy.",
+    "footerPagesTitle": "Pages",
+    "footerSupportTitle": "Support",
+    "footerSupportDescription": "Need help? Our team is available 24/7.",
+    "footerCopyrightSuffix": "All rights reserved.",
+    "logoTop": "AHREFS",
+    "logoBottom": "GROUP BUY"
   },
   "seoKeywords": [
     "Ahrefs group buy",
