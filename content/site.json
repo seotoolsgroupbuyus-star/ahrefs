@@ -633,7 +633,9 @@
     "footerSupportDescription": "Need help? Our team is available 24/7.",
     "footerCopyrightSuffix": "All rights reserved.",
     "logoTop": "AHREFS",
-    "logoBottom": "GROUP BUY"
+    "logoBottom": "GROUP BUY",
+    "authorEditorialLabel": "Editorial",
+    "authorWrittenBy": "Written by:"
   },
   "seoKeywords": [
     "Ahrefs group buy",
