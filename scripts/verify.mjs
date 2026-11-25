@@ -86,7 +86,9 @@ const homeSource=fs.readFileSync('src/pages/index.astro','utf8');
 assert(fs.readFileSync('src/react/Navbar.tsx','utf8').includes('href={site.paymentBaseUrl}'),'Original React header must open payment subdomain');
 assert(fs.readFileSync('src/react/ReferenceStyleHome.tsx','utf8').includes('href={plan.buyUrl}'),'Every original React plan CTA must use editable buyUrl');
 assert(site.plans.every(plan=>plan.buyUrl===site.paymentBaseUrl),'All plan CTAs must match payment homepage');
-assert(site.primaryCtaUrl==='/#pricing','Hero View Plans should navigate to pricing, not payment');
+for(const [key,value] of [['primaryCtaUrl',site.primaryCtaUrl],['secondaryCtaUrl',site.secondaryCtaUrl]]){
+ assert(typeof value==='string' && (value.startsWith('/') || /^https:\/\//.test(value)), 'CMS hero '+key+' must be a local route or HTTPS destination');
+}
 
 assert(homeSource.includes('<ReferenceStyleHome client:load />'),'Original React homepage must hydrate');
 assert(layoutSource.includes('<Navbar initialPath={Astro.url.pathname} client:load />'),'Original React Navbar missing');
