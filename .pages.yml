@@ -59,10 +59,8 @@ content:
           - { name: heroChips, type: string, list: true }
           - { name: trustStrip, type: string, list: true }
           - { name: toolStripHeading, type: string }
-          - { name: billingLabel, type: string }
           - { name: monthlyLabel, type: string }
           - { name: yearlyLabel, type: string }
-          - { name: currencyLabel, type: string }
           - { name: usdLabel, type: string }
           - { name: pkrLabel, type: string }
           - { name: popularRibbon, type: string }
@@ -70,14 +68,9 @@ content:
           - { name: planButton, type: string }
           - { name: copyCouponLabel, type: string }
           - { name: copiedCouponLabel, type: string }
-          - { name: comparisonCaption, type: string }
           - { name: comparisonGroupBuyHeader, type: string }
           - { name: comparisonDirectHeader, type: string }
-          - { name: articleCategorySuffix, type: string }
           - { name: tableOfContentsTitle, type: string }
-          - { name: articleAsideTitle, type: string }
-          - { name: articleAsideDescription, type: text }
-          - { name: articleAsideButton, type: string }
           - { name: articleCtaTitle, type: string }
           - { name: articleCtaLead, type: text }
           - { name: articleCtaButton, type: string }
@@ -251,12 +244,10 @@ content:
           - { name: pricingLead, type: text }
           - { name: offerLabel, type: string }
           - { name: offerText, type: string }
-          - { name: whyEyebrow, type: string }
           - { name: whyTitle, type: string }
           - { name: whyDescription, type: text }
           - { name: problemTitle, type: string }
           - { name: solutionTitle, type: string }
-          - { name: toolsEyebrow, type: string }
           - { name: toolsTitle, type: string }
           - { name: toolsDescription, type: text }
           - { name: toolBadge, type: string }
@@ -273,8 +264,6 @@ content:
           - { name: reviewsCount, type: string }
           - { name: faqTitle, type: string }
           - { name: faqLead, type: text }
-          - { name: guidesTitle, type: string }
-          - { name: guidesLabel, type: string }
       - name: extensionFeatures
         label: Toolbar feature descriptions
         type: object
