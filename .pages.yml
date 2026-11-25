@@ -113,6 +113,9 @@ content:
           - { name: logoBottom, type: string }
           - { name: authorEditorialLabel, type: string }
           - { name: authorWrittenBy, type: string }
+          - { name: toolsSearchPlaceholder, type: string }
+          - { name: seePricing, type: string }
+          - { name: heroTitleAccent, type: string }
       - { name: siteUrl, type: string }
       - { name: googleSiteVerification, type: string }
       - { name: themeColor, type: string }
