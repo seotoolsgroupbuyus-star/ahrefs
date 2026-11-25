@@ -131,7 +131,6 @@ content:
           - { name: yearlySavingsLabel, type: string }
           - { name: moreToolsLabel, type: string }
           - { name: featureTooltipFallback, type: string }
-          - { name: heroTitlePrefix, type: string }
           - { name: detectedCountryLabel, type: string }
           - { name: articleAsideUrl, type: string }
           - { name: homeNavLabel, type: string }
