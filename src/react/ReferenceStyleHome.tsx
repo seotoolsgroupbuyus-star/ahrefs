@@ -100,52 +100,16 @@ function toolDomain(name: string) {
 
 function ToolLogo({ name }: { name: string }) {
   const [failed, setFailed] = useState(false);
-  const [triedFavicon, setTriedFavicon] = useState(false);
-
-  const domain = toolDomain(name);
   const key = toolLogoKey(name);
-  // Prefer real brand icons (Simple Icons) so we don't get letter-style favicons.
-  // Fallback to favicon for tools not covered by Simple Icons, then initials.
-  const simpleIconSrc = key ? `https://cdn.simpleicons.org/${key}` : null;
-  const faviconSrc = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=64` : null;
-
-  const src = !triedFavicon ? (simpleIconSrc ?? faviconSrc ?? "") : faviconSrc ?? "";
-
-  if (failed) {
-    const initials =
-      name
-        .split(/\s+/)
-        .filter(Boolean)
-        .slice(0, 2)
-        .map((p) => p[0]?.toUpperCase())
-        .join("") || name.slice(0, 2).toUpperCase();
-    return (
-      <span
-        aria-hidden
-        className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-sm font-black text-[#1A284D]"
-      >
-        {initials}
-      </span>
-    );
+  const localLogos = new Set(["ahrefs", "semrush", "canva", "grammarly", "moz", "spyfu", "ubersuggest", "envato"]);
+  const domain = toolDomain(name);
+  // First-party bundled assets avoid blocked external CDN requests.
+  const src = localLogos.has(key) ? `/logos/${key}.svg` : (domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=64` : "");
+  if (failed || !src) {
+    const initials = name.split(/\s+/).filter(Boolean).slice(0, 2).map(part => part[0]?.toUpperCase()).join("") || name.slice(0, 2).toUpperCase();
+    return <span aria-label={`${name} logo`} role="img" className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-sm font-black text-[#1A284D]">{initials}</span>;
   }
-
-  return (
-    <img
-      src={src}
-      alt={`${name} logo`}
-      className="h-10 w-10"
-      loading="lazy"
-      decoding="async"
-      referrerPolicy="no-referrer"
-      onError={() => {
-        if (!triedFavicon && faviconSrc && src !== faviconSrc) {
-          setTriedFavicon(true);
-          return;
-        }
-        setFailed(true);
-      }}
-    />
-  );
+  return <img src={src} alt={`${name} logo`} className="h-10 w-10 object-contain" loading="lazy" decoding="async" onError={() => setFailed(true)} />;
 }
 
 function SecurityBadges({ className }: { className?: string }) {
