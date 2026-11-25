@@ -55,3 +55,31 @@
 
 /* Final fallback if both the brand icon CDN and source favicon fail. */
 .logo-initials{display:grid;place-items:center;min-width:34px;min-height:34px;padding:4px;border-radius:9px;background:#e2e8f0;color:#1a284d;font-size:13px;font-weight:900}.tool-card .logo-initials{width:34px;height:34px}
+
+
+/* Original Next.js article layout (DynamicSlugPage) — restores width, vertical rhythm, CTA and sidebar. */
+.is-article-page main{min-height:calc(100vh - 120px);background:#f8fafc;padding-top:96px;padding-bottom:80px}
+.is-article-page .article-hero{background:#1a284d;padding:40px 0 56px;border-bottom:1px solid #ffffff1a}
+.is-article-page .article-hero>.container,.is-article-page .article-shell,.is-article-page .article-related{max-width:1280px}
+.article-category-badge{display:inline-flex;gap:9px;align-items:center;border:1px solid #3b82f64d;background:#2563eb33;color:#dbeafe;padding:9px 16px;border-radius:9999px;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin:0 0 24px}
+.is-article-page .article-hero h1{max-width:780px;font-size:clamp(30px,3.9vw,48px);line-height:1.2;text-transform:uppercase;letter-spacing:-.028em;margin:0 0 20px}
+.is-article-page .article-hero .container>p:not(.article-category-badge):not(.article-meta){max-width:780px;border-left:4px solid #60a5fa;color:#dbeafe;padding-left:20px;line-height:1.7;font-weight:500}
+.is-article-page .article-shell{grid-template-columns:minmax(0,8fr) minmax(270px,4fr);gap:clamp(32px,4vw,56px);padding-top:48px}
+.is-article-page .article-content{background:white;border:1px solid #e2e8f0;border-radius:32px;padding:clamp(24px,3vw,34px);box-shadow:0 2px 9px #142a4a12}
+.is-article-page .article-content h2{margin-top:48px;color:#1a284d;font-size:clamp(24px,2.4vw,30px);font-weight:800;letter-spacing:-.035em;border-bottom:1px solid #e2e8f0;padding-bottom:8px}
+.is-article-page .article-content section:first-of-type>h2:first-child{margin-top:0}
+.is-article-page .article-content .rich p{font-weight:400;color:#526279;line-height:1.75}
+.is-article-page .article-content .rich h3{color:#1a284d;font-size:22px;font-weight:750}
+.is-article-page .article-content .rich li{color:#526279;line-height:1.8}
+.is-article-page .article-content figure{margin:26px 0}.is-article-page .article-content figcaption{margin-top:12px;font-size:13px;color:#64748b;line-height:1.6;text-align:center}
+.is-article-page .article-aside{gap:24px}.is-article-page .article-toc,.is-article-page .help-card{border-radius:32px;padding:28px}
+.is-article-page .article-toc{box-shadow:0 8px 28px #20325113}.is-article-page .article-toc h2{font-size:20px;line-height:1.25;font-weight:900;text-transform:uppercase;color:#1a284d}
+.is-article-page .article-toc a{font-weight:650;font-size:13px;padding:9px 0;color:#53637b}
+.is-article-page .article-cta{box-shadow:0 13px 35px #18345425}.is-article-page .article-cta h3{font-size:clamp(20px,2vw,26px);font-weight:900;line-height:1.2;letter-spacing:-.025em;text-transform:uppercase;color:#1a284d}
+.is-article-page .article-cta p{font-size:14px;color:#5b697d;line-height:1.7;margin:14px 0 24px}
+.is-article-page .article-cta-button{display:block;background:#ff5c00;color:white;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.12em;border-radius:16px;padding:17px 14px;box-shadow:0 10px 20px #ea580c30}
+.is-article-page .article-cta-button:hover{background:#e65300}
+.is-article-page .article-cta-trust{display:flex;gap:7px;justify-content:center;align-items:center;text-transform:uppercase;font-size:10px;font-weight:850;letter-spacing:.07em;color:#64748b;margin-top:18px}
+.is-article-page .article-cta-trust svg{color:#16a34a;flex-shrink:0}
+.is-article-page .article-related{padding-top:20px;padding-bottom:36px}.is-article-page .article-related h2{font-size:24px;font-weight:900;color:#1a284d;text-transform:uppercase}.is-article-page .article-related .card{border-radius:20px}
+@media(max-width:900px){.is-article-page .article-shell{grid-template-columns:minmax(0,1fr)}.is-article-page .article-aside{position:static}.is-article-page .article-hero{padding:30px 0 38px}}
