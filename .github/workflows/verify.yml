@@ -19,3 +19,4 @@ jobs:
       - run: npm run test:cms-edit
       - run: node scripts/verify-home-content-parity.mjs
       - run: npm run build
+      - run: node scripts/verify-built-pages.mjs
