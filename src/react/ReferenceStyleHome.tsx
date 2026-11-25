@@ -18,7 +18,7 @@ import {
   Copy,
   AlertCircle,
 } from "lucide-react";
-import { cn } from "./cmsData";
+import { cn, site } from "./cmsData";
 import { FAQ_ITEMS } from "./cmsData";
 import { REVIEW_ITEMS } from "./cmsData";
 import { SITE_CONFIG } from "./cmsData";
@@ -219,9 +219,9 @@ function TopHero() {
             </div>
 
             <h1 className="mb-8 text-5xl font-black leading-none tracking-tighter md:text-8xl">
-              Ahrefs Group Buy – Get Premium Access{" "}
+              {site.heroTitle.slice(0,site.heroTitle.toLowerCase().lastIndexOf('at 90% off')) || 'Ahrefs Group Buy – Get Premium Access'}{" "}
               <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-                at 90% Off
+                {site.uiLabels.heroTitleAccent}
               </span>
             </h1>
 
@@ -236,7 +236,7 @@ function TopHero() {
                 onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
                 className="rounded-2xl bg-blue-600 px-10 py-5 text-lg font-black text-white shadow-2xl shadow-blue-600/20 transition-all hover:scale-105 hover:bg-blue-700 active:scale-95"
               >
-                View Plans & Pricing
+                {site.primaryCtaText}
               </motion.button>
               <motion.button
                 type="button"
@@ -244,7 +244,7 @@ function TopHero() {
                 onClick={() => document.getElementById("limitations")?.scrollIntoView({ behavior: "smooth" })}
                 className="rounded-2xl border border-white/10 bg-white/5 px-10 py-5 text-lg font-black text-white transition-all hover:bg-white/10"
               >
-                How it Works
+                {site.secondaryCtaText}
               </motion.button>
             </div>
 
@@ -376,7 +376,7 @@ function RefPricing() {
             viewport={viewOnce}
           >
             <h2 className="mb-6 text-4xl font-black tracking-tight text-[#1A284D] md:text-6xl">
-              Choose Your Plan Pricing That Fits Your Budget
+              {site.homeCopy.pricingEyebrow} {site.homeCopy.pricingTitle}
             </h2>
             <p className="mx-auto mb-12 max-w-2xl text-lg text-slate-500">
               Choose the perfect plan for your SEO needs. From individual bloggers to large agencies, we&apos;ve got
@@ -552,7 +552,7 @@ function RefPricing() {
                       : "bg-[#1A284D] text-white shadow-slate-200 hover:bg-[#15203d]"
                   )}
                 >
-                  Buy Now
+                  {site.uiLabels.planButton}
                 </motion.a>
               </motion.div>
             );
@@ -566,7 +566,7 @@ function RefPricing() {
             onClick={() => setIsModalOpen(true)}
             className="group inline-flex items-center gap-2 text-sm font-black text-[#1A284D] transition-colors hover:text-[#FF5C00]"
           >
-            Open detailed comparison table
+            {site.uiLabels.openDetailedComparison}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </motion.button>
         </div>
@@ -730,7 +730,7 @@ function WhyChooseShared() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewOnce}
           >
-            <h2 className="mb-6 text-4xl font-black tracking-tight text-[#1A284D] md:text-6xl">Why Choose Shared Access?</h2>
+            <h2 className="mb-6 text-4xl font-black tracking-tight text-[#1A284D] md:text-6xl">{site.homeCopy.whyTitle}</h2>
             <p className="mx-auto max-w-2xl text-xl font-medium text-gray-500">
               Traditional tool subscriptions are designed for big agencies. We make them accessible for everyone.
             </p>
@@ -799,7 +799,7 @@ function ToolsIncluded({ onOpenTools }: { onOpenTools: () => void }) {
           viewport={viewOnce}
         >
           <h2 className="mb-6 text-5xl font-black tracking-tight text-[#1A284D] md:text-7xl">
-            Get Instant Access to 20+ Premium SEO Tools
+            {site.homeCopy.toolsTitle}
           </h2>
           <p className="mx-auto max-w-2xl text-xl font-medium text-gray-500">
             Everything you need for SEO, Content, and Design in one place.
@@ -822,7 +822,7 @@ function ToolsIncluded({ onOpenTools }: { onOpenTools: () => void }) {
                 <ToolLogo name={tool.name} />
               </div>
               <h4 className="mb-1 text-2xl font-black text-[#1A284D]">{tool.name}</h4>
-              <p className="text-sm font-bold uppercase tracking-widest text-gray-400">Premium Access</p>
+              <p className="text-sm font-bold uppercase tracking-widest text-gray-400">{site.homeCopy.toolBadge}</p>
             </motion.div>
           ))}
         </div>
@@ -833,7 +833,7 @@ function ToolsIncluded({ onOpenTools }: { onOpenTools: () => void }) {
             onClick={onOpenTools}
             className="inline-flex items-center gap-3 rounded-2xl bg-[#1A284D] px-10 py-5 text-sm font-black uppercase tracking-widest text-white shadow-xl shadow-slate-200 transition-colors hover:bg-[#15203d]"
           >
-            View all 25+ tools <ArrowRight className="h-5 w-5" />
+            {site.uiLabels.viewAllTools} <ArrowRight className="h-5 w-5" />
           </motion.button>
         </div>
       </div>
@@ -947,7 +947,7 @@ function ComparisonSection() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-4xl font-black tracking-tight text-[#1A284D] md:text-6xl">
-            Official Ahrefs vs {brand.name}: The Price Gap
+            {site.homeCopy.comparisonTitle}
           </h2>
         </motion.div>
         {/* Removed the extra “Official vs {brand.name}” hero block to avoid duplicate messaging. */}
@@ -1062,7 +1062,7 @@ function AhrefsBarFeatures() {
               <ShieldCheck className="h-4 w-4" /> Exclusive Extension Access
             </div>
             <h2 className="mb-8 text-5xl font-black leading-[1.1] md:text-6xl">
-              Use Ahrefs SEO Toolbar Directly in Your Browser
+              {site.homeCopy.extensionTitle}
             </h2>
             <p className="mb-12 max-w-xl text-xl leading-relaxed text-blue-100 opacity-90">
               Stop switching tabs. Get critical SEO metrics like Domain Rating, URL Rating, and Backlink counts directly
@@ -1085,9 +1085,10 @@ function AhrefsBarFeatures() {
               <motion.button
                 type="button"
                 whileTap={{ scale: 0.95 }}
+                onClick={() => window.location.assign(site.paymentBaseUrl)}
                 className="inline-flex items-center gap-3 rounded-2xl bg-white px-10 py-5 text-lg font-black text-blue-600 shadow-2xl shadow-white/20 transition-all hover:shadow-white/30 active:scale-95"
               >
-                Start Using Ahrefs Bar <ArrowRight className="h-6 w-6" />
+                {site.uiLabels.toolbarButton} <ArrowRight className="h-6 w-6" />
               </motion.button>
               <div className="flex items-center gap-4 font-bold text-blue-100">
                 <div className="flex -space-x-3">
@@ -1312,7 +1313,7 @@ function RefFAQ() {
           viewport={viewOnce}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="mb-4 text-4xl font-black text-[#1A284D]">Ahrefs Group Buy — Frequently Asked Questions</h2>
+          <h2 className="mb-4 text-4xl font-black text-[#1A284D]">{site.homeCopy.faqTitle}</h2>
           <p className="font-medium text-gray-500">Everything you need to know about our Ahrefs access.</p>
         </motion.div>
         <div className="grid gap-4">
