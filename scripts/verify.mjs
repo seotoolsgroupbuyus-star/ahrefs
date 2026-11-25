@@ -63,6 +63,16 @@ assert(fs.existsSync('src/pages/sitemap.xml.js'),'Missing sitemap generator');
 assert(fs.existsSync('src/pages/robots.txt.js'),'Missing robots generator');
 
 
+// Validate internal links stored in Pages CMS article rich text.
+for(const article of allArticles){
+ const body=(article.sections||[]).map(section=>section.html||'').join('');
+ for(const match of body.matchAll(/href=["'](\/[^"'?#]*)(?:[?#][^"']*)?["']/gi)){
+   const pathPart=decodeURIComponent(match[1]).replace(/^\/|\/$/g,'');
+   if(!pathPart||pathPart.startsWith('images/')||pathPart.startsWith('avatars/'))continue;
+   assert(slugs.has(pathPart)||pathPart==='privacy','Broken internal article link: '+article.slug+' → '+match[1]);
+ }
+}
+
 // Regression guard for public purchase/signup CTAs after payment-subdomain migration.
 // Only check published page templates and CMS content, not archived original-source files.
 const forbiddenCheckout=/(?:members\.buyseo\.org|seogroupsbuy\.com\/users\/cart|seogroupsbuy\.com\/users\/signup)/i;
