@@ -642,7 +642,18 @@
     "articleCtaTitle": "Ready to Start?",
     "articleCtaLead": "Get instant access to Ahrefs tools and start dominating your niche today.",
     "articleCtaButton": "View Pricing & Plans",
-    "articleCtaTrust": "Secure Checkout • Instant Setup"
+    "articleCtaTrust": "Secure Checkout • Instant Setup",
+    "limitationsQuestion": "Still have questions?",
+    "limitationsSupportText": "Our support team is ready to help you 24/7.",
+    "writeReviewLabel": "Write a review",
+    "writeReviewUrl": "https://wa.me/447845432224",
+    "reviewPlatformLabel": "Trustpilot",
+    "yearlySavingsLabel": "20% off vs monthly",
+    "moreToolsLabel": "more tools",
+    "featureTooltipFallback": "More details for this feature are included in the plan limits and comparison.",
+    "heroTitlePrefix": "Ahrefs Group Buy – Get Premium Access",
+    "detectedCountryLabel": "Detected:",
+    "articleAsideUrl": "/#pricing"
   },
   "seoKeywords": [
     "Ahrefs group buy",
@@ -677,5 +688,7 @@
   "paymentBaseUrl": "https://pay.aherfsgroupbuy.com",
   "googleSiteVerification": "TRetEiJrhDafiDC_pzevWnk7UHV90biJ9ZRSKn4Lies",
   "themeColor": "#1A284D",
-  "ogImage": "/og.svg"
+  "ogImage": "/og.svg",
+  "brandMarkImage": "",
+  "favicon": "/og.svg"
 }
