@@ -667,5 +667,8 @@
       "url": "https://aherfsgroupbuy.com/"
     }
   ],
-  "paymentBaseUrl": "https://pay.aherfsgroupbuy.com"
+  "paymentBaseUrl": "https://pay.aherfsgroupbuy.com",
+  "googleSiteVerification": "TRetEiJrhDafiDC_pzevWnk7UHV90biJ9ZRSKn4Lies",
+  "themeColor": "#1A284D",
+  "ogImage": "/og.svg"
 }
