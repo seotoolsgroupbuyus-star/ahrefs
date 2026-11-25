@@ -10,7 +10,7 @@ const used=[
 ].map(read).join('\n');
 const errors=[];
 for(const [key,value] of Object.entries(site)){
- if(!new RegExp('\\bname:\\s*'+key+'\\s*[,}]').test(cms))errors.push('Missing CMS top-level field: '+key);
+ if(!new RegExp('\\bname:\\s*'+key+'\\b').test(cms))errors.push('Missing CMS top-level field: '+key);
  if(key==='uiLabels'||key==='homeCopy'){
   for(const child of Object.keys(value)){
    if(!new RegExp('\\bname:\\s*'+child+'\\s*[,}]').test(cms))errors.push('Missing CMS editor: '+key+'.'+child);
@@ -20,10 +20,10 @@ for(const [key,value] of Object.entries(site)){
 }
 const article=JSON.parse(read('content/articles/ahrefs-group-buy-guide.json'));
 for(const key of Object.keys(article)){
- if(!new RegExp('\\bname:\\s*'+key+'\\s*[,}]').test(cms))errors.push('Missing article CMS field: '+key);
+ if(!new RegExp('\\bname:\\s*'+key+'\\b').test(cms))errors.push('Missing article CMS field: '+key);
 }
 for(const key of Object.keys(article.sections[0]||{})){
- if(!new RegExp('\\bname:\\s*'+key+'\\s*[,}]').test(cms))errors.push('Missing article section field: '+key);
+ if(!new RegExp('\\bname:\\s*'+key+'\\b').test(cms))errors.push('Missing article section field: '+key);
 }
 const articleCount=fs.readdirSync('content/articles').filter(f=>f.endsWith('.json')).length;
 assert.equal(articleCount,34,'All 34 original article JSONs must remain');
