@@ -44,7 +44,7 @@ content:
           collapsible: { collapsed: true, summary: "{heading}" }
         fields:
           - { name: heading, type: string }
-          - { name: html, type: rich-text, options: { format: html, media: uploads, switcher: false } }
+          - { name: html, label: Section content, type: rich-text, options: { format: html, media: uploads, switcher: false } }
   - name: site
     label: Homepage, Plans, Navigation, FAQ and Reviews
     type: file
