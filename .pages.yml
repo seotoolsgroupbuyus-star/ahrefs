@@ -81,6 +81,20 @@ content:
           - { name: publishedLabel, type: string }
           - { name: updatedLabel, type: string }
           - { name: bylineLabel, type: string }
+          - { name: openDetailedComparison, type: string }
+          - { name: detailedComparisonTitle, type: string }
+          - { name: detailedComparisonFeatures, type: string, list: true }
+          - { name: detailedComparisonClose, type: string }
+          - { name: riskBadge, type: string }
+          - { name: riskTitle, type: string }
+          - { name: riskDescription, type: text }
+          - { name: yearlyWhyTitle, type: string }
+          - { name: yearlyWhyDescription, type: text }
+          - { name: yearlyWhyLink, type: string }
+          - { name: toolbarButton, type: string }
+          - { name: toolbarSocialProof, type: string }
+          - { name: toolbarMockUrl, type: string }
+          - { name: toolbarMockMetrics, type: string, list: true }
       - { name: siteUrl, type: string }
       - { name: paymentBaseUrl, type: string }
       - { name: seoKeywords, type: string, list: true }
