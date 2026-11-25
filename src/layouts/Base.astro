@@ -1,18 +1,19 @@
 ---
 import {site,absolute} from '../lib/data.js';
 import '../styles/main.css';
-const {title=site.homeTitle,description=site.homeDescription,pathname='/',image='/og.svg',type='website',structuredData=[]}=Astro.props;
+const {title=site.homeTitle,description=site.homeDescription,pathname='/',image=site.ogImage||'/og.svg',type='website',structuredData=[]}=Astro.props;
 const canonical=absolute(pathname);
 const schema={'@context':'https://schema.org','@type':'WebSite',name:site.brand,url:site.siteUrl};
 ---
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content={site.themeColor||"#1A284D"}/>
 <title>{title}</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/>
 {site.seoKeywords?.length>0&&<meta name="keywords" content={site.seoKeywords.join(', ')}/>}
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>{site.googleSiteVerification&&<meta name="google-site-verification" content={site.googleSiteVerification}/>}
 <meta property="og:type" content={type}/><meta property="og:site_name" content={site.brand}/><meta property="og:locale" content="en_US"/><meta property="og:url" content={canonical}/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:image" content={absolute(image)}/>
-<meta name="twitter:card" content="summary_large_image"/><meta name="publisher" content={site.brand}/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/>
-<link rel="icon" href="/og.svg" type="image/svg+xml"/><script type="application/ld+json" set:html={JSON.stringify(schema)}/>{structuredData.map(item=><script type="application/ld+json" set:html={JSON.stringify(item)}/>)}
+<meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content={absolute(image)}/><meta name="publisher" content={site.brand}/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/>
+<link rel="icon" href="/og.svg" type="image/svg+xml"/><link rel="apple-touch-icon" href={site.ogImage||"/og.svg"}/><script type="application/ld+json" set:html={JSON.stringify(schema)}/>{structuredData.map(item=><script type="application/ld+json" set:html={JSON.stringify(item)}/>)}
 </head><body><header class="site-head"><div class="container navigation"><a class="brand brand-logo" href="/" aria-label={site.brand}><span class="brand-mark"><svg viewBox="0 0 24 24" width="29" height="29" fill="currentColor" aria-hidden="true"><path d="M2 18h3V8H2v10zm5 0h3V4H7v14zm5 0h3v-7h-3v7zm5 0h3v-4h-3v4z"/></svg><span class="brand-dot"></span></span><span class="brand-words"><strong>{site.uiLabels.logoTop}</strong><small>{site.uiLabels.logoBottom}</small></span></a><nav aria-label="Primary menu">{site.menu.map(item=><a href={item.url}>{item.label}</a>)}</nav><details class="mobile-nav"><summary>{site.uiLabels.mobileMenu}</summary><nav aria-label="Mobile menu">{site.menu.map(item=><a href={item.url}>{item.label}</a>)}</nav></details><a class="chat-link" href={site.paymentBaseUrl} rel="noopener noreferrer">{site.uiLabels.headerButton}</a></div></header>
 <main><slot/></main><footer class="site-footer"><div class="container footer-inner"><div class="footer-about"><strong>{site.brand}</strong><p>{site.footerText}</p></div><div class="footer-pages"><h2>{site.uiLabels.footerPagesTitle}</h2><nav aria-label="Footer navigation">{(site.footerMenu||[]).map(item=><a href={item.url}>{item.label}</a>)}</nav></div><div class="footer-support"><h2>{site.uiLabels.footerSupportTitle}</h2><p>{site.uiLabels.footerSupportDescription}</p><a href={site.whatsappUrl} target="_blank" rel="noopener noreferrer" class="footer-support-btn">{site.uiLabels.footerSupportLabel} →</a></div></div><div class="footer-copyright">© {new Date().getFullYear()} {site.brand}. {site.uiLabels.footerCopyrightSuffix}</div></footer>
 <div class="whatsapp-widget" data-whatsapp-base={site.whatsappUrl}>
