@@ -14,5 +14,7 @@ jobs:
       - run: npm install
       - run: npm run verify
       - run: npm run verify:source-parity
+      - run: npm run verify:cms
+      - run: npm run test:cms-edit
       - run: node scripts/verify-home-content-parity.mjs
       - run: npm run build
