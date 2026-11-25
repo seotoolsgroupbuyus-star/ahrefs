@@ -583,9 +583,9 @@
     "relatedReadingTitle": "Related reading",
     "headerButton": "Get Started",
     "footerSupportLabel": "WhatsApp Support",
-    "viewAllTools": "View All Tools",
-    "allToolsTitle": "All Included Tools",
-    "allToolsDescription": "Explore the tools included with our premium bundle.",
+    "viewAllTools": "View all 25+ tools",
+    "allToolsTitle": "20+ Premium SEO Tools",
+    "allToolsDescription": "Included tools",
     "closeModal": "Close",
     "comparisonFeatureHeader": "Feature",
     "whatsappSupport": "WhatsApp support",
@@ -635,7 +635,10 @@
     "logoTop": "AHREFS",
     "logoBottom": "GROUP BUY",
     "authorEditorialLabel": "Editorial",
-    "authorWrittenBy": "Written by:"
+    "authorWrittenBy": "Written by:",
+    "toolsSearchPlaceholder": "Search tools...",
+    "seePricing": "See pricing",
+    "heroTitleAccent": "at 90% Off"
   },
   "seoKeywords": [
     "Ahrefs group buy",
