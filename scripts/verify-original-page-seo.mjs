@@ -10,6 +10,18 @@ const module={exports:{}};
 vm.runInNewContext(compiled,{module,exports:module.exports},{timeout:3000,filename:'original-source/site.ts'});
 const original=module.exports.PAGES;
 assert.ok(original && typeof original==='object','Original source page map unavailable');
+const site=JSON.parse(fs.readFileSync('content/site.json','utf8'));
+const privacy=JSON.parse(fs.readFileSync('content/privacy.json','utf8'));
+// Exact strings read from newahrefs-main.zip: src/app/layout.tsx,
+// src/app/page.tsx and src/app/privacy/page.tsx.
+const sourceHomeTitle='AhrefsGroupBuy – Fast, Stable Shared Ahrefs Access';
+const sourceHomeDescription='AhrefsGroupBuy shares Ahrefs for keyword research, backlinks, audits, and competitors—dashboard access with responsive support.';
+const sourcePrivacyTitle='Privacy Policy for AhrefsGroupBuy Users & Data';
+const sourcePrivacyDescription='How AhrefsGroupBuy collects and uses your data: cookies, third parties, your rights, and how to contact us.';
+assert.equal(site.homeTitle,sourceHomeTitle,'Original ZIP homepage SEO title mismatch');
+assert.equal(site.homeDescription,sourceHomeDescription,'Original ZIP homepage meta description mismatch');
+assert.equal(privacy.seoTitle,sourcePrivacyTitle,'Original ZIP Privacy Policy SEO title mismatch');
+assert.equal(privacy.seoDescription,sourcePrivacyDescription,'Original ZIP Privacy Policy meta description mismatch');
 const articlePaths=fs.readdirSync('content/articles').filter(x=>x.endsWith('.json'));
 const errors=[];
 const norm=v=>v===undefined||v===null?'':String(v);
@@ -31,4 +43,4 @@ for(const file of articlePaths){
 }
 for(const slug of Object.keys(original))if(!articlePaths.includes(slug+'.json'))errors.push({slug,key:'missing migrated route'});
 if(errors.length){for(const err of errors)console.error('ORIGINAL PAGE PARITY FAIL:',JSON.stringify(err));process.exit(1)}
-console.log('ORIGINAL PAGE SEO PASS: '+articlePaths.length+' URLs, H1s, SEO titles, SEO descriptions, pillar/cluster metadata and parent links exactly match original Next.js source.');
+console.log('ORIGINAL PAGE SEO PASS: homepage and Privacy titles/descriptions plus '+articlePaths.length+' original article URLs, titles, descriptions and relationships.');
