@@ -102,9 +102,10 @@ function ToolLogo({ name }: { name: string }) {
   const [failed, setFailed] = useState(false);
   const key = toolLogoKey(name);
   const localLogos = new Set(["ahrefs", "semrush", "canva", "grammarly", "moz", "spyfu", "ubersuggest", "envato"]);
-  const domain = toolDomain(name);
-  // First-party bundled assets avoid blocked external CDN requests.
-  const src = localLogos.has(key) ? `/logos/${key}.svg` : (domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=64` : "");
+  // Never request a third-party favicon for catalog items. Browser/CSP/network
+  // restrictions can show a broken-image box before onError fires.
+  // Unknown brands get a clean text mark until an original logo is uploaded.
+  const src = localLogos.has(key) ? `/logos/${key}.svg` : "";
   if (failed || !src) {
     const initials = name.split(/\s+/).filter(Boolean).slice(0, 2).map(part => part[0]?.toUpperCase()).join("") || name.slice(0, 2).toUpperCase();
     return <span aria-label={`${name} logo`} role="img" className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-sm font-black text-[#1A284D]">{initials}</span>;
