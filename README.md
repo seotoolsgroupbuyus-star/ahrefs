@@ -20,6 +20,20 @@ Astro static website migrated from the supplied Next.js project and uploaded to 
 5. Preview first. Connect your custom domain only after link, image, SEO and design validation.
 6. For Pages CMS, connect GitHub at https://pagescms.org and select this repo; the editor fields are in `.pages.yml`.
 
+## Cloudflare deploy error — `npx wrangler deploy` (November 25, 2026)
+
+Astro correctly builds static HTML into `dist/`. This repository's `wrangler.jsonc` contains `pages_build_output_dir: "./dist"`, which is a **Pages** deployment configuration. Running the generic Worker command `npx wrangler deploy` on this repository fails with `Missing entry-point to Worker script or to assets directory`.
+
+For the preferred **Cloudflare Pages Git integration**:
+- Create or use a **Pages** project under Workers & Pages (not a Worker project with Builds).
+- Connect GitHub `seotoolsgroupbuyus-star/ahrefs` and branch `main`.
+- Framework: Astro; **Build command**: `npm run build`; **Build output directory**: `dist`; root: repository root.
+- Do **not** configure a generic `npx wrangler deploy` command. Pages Git integration publishes the `dist` output automatically.
+
+If you are intentionally using a **custom CLI deployment for an existing Pages project**, the Pages CLI command is `npx wrangler pages deploy dist --project-name <EXACT_PAGES_PROJECT_NAME>` (replace the placeholder with the real Cloudflare Pages project name). Avoid running both the Pages Git integration deployment and a second CLI deployment for the same push.
+
+A **Workers** Git-build project is a separate hosting choice; the Worker deploy command requires a `main` entry point or `assets.directory` in a Workers config. This repository is prepared for **Pages**, so do not add Worker entrypoints merely to suppress this mismatch.
+
 ## IMPORTANT: Migration QA still required
 
 - Source config uses `https://aherfsgroupbuy.com` (spelling preserved). Confirm this is the intended production domain before cutover.
