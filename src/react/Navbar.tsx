@@ -62,7 +62,7 @@ export function Navbar({initialPath="/"}:{initialPath?:string}) {
                     : "text-blue-100"
               )}
             >
-              Home
+              {site.uiLabels.homeNavLabel}
             </a>
             {HOME_SECTIONS.map((s) => (
               <a
@@ -126,7 +126,7 @@ export function Navbar({initialPath="/"}:{initialPath?:string}) {
                     pathname === "/" ? "text-blue-300" : "text-white"
                   )}
                 >
-                  Home
+                  {site.uiLabels.homeNavLabel}
                 </a>
                 <div className="space-y-4">
                   <p className="text-[10px] font-black uppercase tracking-widest text-blue-300">
