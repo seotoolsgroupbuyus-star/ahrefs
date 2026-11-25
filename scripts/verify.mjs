@@ -89,7 +89,7 @@ assert(site.plans.every(plan=>plan.buyUrl===site.paymentBaseUrl),'All plan CTAs 
 assert(site.primaryCtaUrl==='/#pricing','Hero View Plans should navigate to pricing, not payment');
 
 assert(homeSource.includes('<ReferenceStyleHome client:load />'),'Original React homepage must hydrate');
-assert(layoutSource.includes('<Navbar client:load />'),'Original React Navbar missing');
+assert(layoutSource.includes('<Navbar initialPath={Astro.url.pathname} client:load />'),'Original React Navbar missing');
 assert(layoutSource.includes('<Footer client:visible />'),'Original React Footer missing');
 assert(layoutSource.includes('<WhatsAppChatBox client:load />'),'Original React WhatsApp missing');
 assert(fs.readFileSync('src/react/ReferenceStyleHome.tsx','utf8').includes('<ToolsModal'),'Original catalog modal missing');
