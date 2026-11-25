@@ -10,7 +10,7 @@ import { cn, SITE_CONFIG, site, springSnappy } from "./cmsData";
 
 import { Logo } from "./Logo";
 
-const HOME_SECTIONS = site.menu.filter(item=>item.url.includes("#")).map(item=>({label:item.label,hash:item.url.split("#")[1]}));
+const HOME_SECTIONS = site.menu.filter(item=>item.url.includes("#") && item.url.split("#")[1] !== "hero" && item.label.trim().toLowerCase() !== "home").map(item=>({label:item.label,hash:item.url.split("#")[1]}));
 
 export function Navbar({initialPath="/"}:{initialPath?:string}) {
   const [isOpen, setIsOpen] = useState(false);
