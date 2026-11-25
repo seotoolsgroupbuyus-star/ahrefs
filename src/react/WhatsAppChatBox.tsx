@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { MessageCircle, X, Send } from "lucide-react";
-import { SITE_CONFIG, site } from "./cmsData";
+import { SITE_CONFIG, site, cn } from "./cmsData";
 
 
 const DEFAULT_MESSAGE = site.uiLabels.chatDefaultMessage;
