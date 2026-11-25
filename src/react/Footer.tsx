@@ -36,40 +36,16 @@ export function Footer() {
           <div className="md:col-span-6 lg:col-span-7">
             <div className="grid gap-10 sm:grid-cols-2">
               <div>
-                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-blue-300/90">Pages</p>
+                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-blue-300/90">{site.uiLabels.footerPagesTitle}</p>
                 <ul className="mt-4 space-y-3 text-sm font-semibold text-white/70">
-                  <li>
-                    <a className="transition-colors hover:text-white" href="/">
-                      Home
-                    </a>
-                  </li>
-                  <li>
-                    <a className="transition-colors hover:text-white" href="/#pricing">
-                      Pricing
-                    </a>
-                  </li>
-                  <li>
-                    <a className="transition-colors hover:text-white" href="/ahrefs-group-buy-guide">
-                      Guide
-                    </a>
-                  </li>
-                  <li>
-                    <a className="transition-colors hover:text-white" href="/ahrefs-group-buy-risks">
-                      Risks
-                    </a>
-                  </li>
-                  <li>
-                    <a className="transition-colors hover:text-white" href="/privacy">
-                      Privacy Policy
-                    </a>
-                  </li>
+                  {site.footerMenu.map(item=><li key={item.label}><a className="transition-colors hover:text-white" href={item.url}>{item.label}</a></li>)}
                 </ul>
               </div>
 
               <div>
-                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-blue-300/90">Support</p>
+                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-blue-300/90">{site.uiLabels.footerSupportTitle}</p>
                 <p className="mt-4 text-sm font-medium leading-relaxed text-white/70">
-                  Need help? Our team is available 24/7.
+                  {site.uiLabels.footerSupportDescription}
                 </p>
                 <a
                   href={SITE_CONFIG.whatsappUrl}
@@ -77,7 +53,7 @@ export function Footer() {
                   rel="noreferrer"
                   className="mt-5 inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-xs font-black uppercase tracking-widest text-[#1A284D] shadow-xl transition-transform hover:-translate-y-0.5"
                 >
-                  WhatsApp Support <ArrowRight className="h-4 w-4" aria-hidden />
+                  {site.uiLabels.footerSupportLabel} <ArrowRight className="h-4 w-4" aria-hidden />
                 </a>
               </div>
             </div>
