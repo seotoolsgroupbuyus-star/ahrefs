@@ -15,14 +15,25 @@ const render=(urlPath)=>fs.readFileSync(path.join(root,urlPath,'index.html'),'ut
 const attr=(html,tag,name)=>{const block=new RegExp('<'+tag+'\\b[^>]*>','i').exec(html)?.[0]||'';return decode(new RegExp('\\b'+name+'="([^"]*)"').exec(block)?.[1]||'')};
 const getMeta=(html,key,value)=>{for(const m of html.matchAll(/<meta\b[^>]*>/g)){if(attr(m[0],'meta',key)===value)return attr(m[0],'meta','content')}return ''};
 const getCanonical=html=>{for(const m of html.matchAll(/<link\b[^>]*>/g))if(attr(m[0],'link','rel')==='canonical')return attr(m[0],'link','href');return ''};
+// Validate the actual rendered head metadata, not just the JSON data.
+function checkSocialTags(html,route,title,description){
+ for(const [attr,name,value] of [
+  ['property','og:title',title],['property','og:description',description],
+  ['name','twitter:title',title],['name','twitter:description',description]
+ ]){
+  check(getMeta(html,attr,name)===value,route+': '+name+' differs from CMS meta');
+ }
+}
 const allSlugs=new Set(articles.map(a=>a.slug));
 const home=render('');
 check(normalize(/<title>([\s\S]*?)<\/title>/.exec(home)?.[1])===site.homeTitle,'Homepage <title> differs from CMS');
 check(getCanonical(home)===site.siteUrl+'/','Homepage canonical mismatch');
 check(getMeta(home,'name','description')===site.homeDescription,'Homepage meta description mismatch');
+checkSocialTags(home,'homepage',site.homeTitle,site.homeDescription);
 const privacyHtml=render('privacy');
 check(normalize(/<title>([\s\S]*?)<\/title>/.exec(privacyHtml)?.[1])===privacy.seoTitle,'Privacy page SEO title mismatch');
 check(getMeta(privacyHtml,'name','description')===privacy.seoDescription,'Privacy meta description mismatch');
+checkSocialTags(privacyHtml,'privacy',privacy.seoTitle,privacy.seoDescription);
 check(privacyHtml.includes(privacy.html.slice(0,120)),'Privacy source HTML not present in rendered page');
 let images=0,internalLinks=0,sections=0;
 for(const article of articles){
@@ -30,6 +41,7 @@ for(const article of articles){
  try{html=render(article.slug)}catch{errors.push(article.slug+': missing generated URL');continue}
  check(normalize(/<title>([\s\S]*?)<\/title>/.exec(html)?.[1])===article.seoTitle,article.slug+': SEO title differs');
  check(getMeta(html,'name','description')===article.seoDescription,article.slug+': SEO description differs');
+ checkSocialTags(html,article.slug,article.seoTitle,article.seoDescription);
  check(getCanonical(html)===site.siteUrl+'/'+article.slug+'/',article.slug+': canonical wrong');
  check(getMeta(html,'name','robots').includes('index,follow'),article.slug+': robots missing index,follow');
  const heading=normalize(/<h1\b[^>]*>([\s\S]*?)<\/h1>/.exec(html)?.[1]);
