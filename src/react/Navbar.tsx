@@ -91,7 +91,7 @@ export function Navbar({initialPath="/"}:{initialPath?:string}) {
             type="button"
             className={cn("lg:hidden", lightNav ? "text-[#1A284D]" : "text-white")}
             onClick={() => setIsOpen(!isOpen)}
-            aria-label="Menu"
+            aria-label={site.uiLabels.mobileMenu}
           >
             {isOpen ? <X /> : <Menu />}
           </button>
@@ -112,7 +112,7 @@ export function Navbar({initialPath="/"}:{initialPath?:string}) {
                 <a href="/" onClick={() => setIsOpen(false)}>
                   <Logo onDark />
                 </a>
-                <button type="button" onClick={() => setIsOpen(false)} className="text-white" aria-label="Close menu">
+                <button type="button" onClick={() => setIsOpen(false)} className="text-white" aria-label={site.uiLabels.closeMenu}>
                   <X />
                 </button>
               </div>
