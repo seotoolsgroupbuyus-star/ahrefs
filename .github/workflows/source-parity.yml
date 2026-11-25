@@ -11,3 +11,6 @@ jobs:
           node-version: '22'
       - run: npm install
       - run: npm run verify:source-parity
+      - run: node scripts/verify-original-page-seo.mjs
+      - run: node scripts/verify-literal-copy.mjs
+      - run: node scripts/verify-home-content-parity.mjs
