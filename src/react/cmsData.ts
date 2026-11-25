@@ -18,8 +18,8 @@ export const SITE_CONFIG={
 export const brand={name:site.brand,url:site.siteUrl,description:site.homeDescription};
 export const hero={
   badge:site.heroBadge,
-  headlineBefore:'AHREFS ACCESS',
-  headlineAccent:'AT 90% OFF.',
+  headlineBefore:site.uiLabels.heroTitlePrefix,
+  headlineAccent:site.uiLabels.heroTitleAccent,
   subhead:site.heroDescription,
   trustLine:site.heroTrust,
 };
