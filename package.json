@@ -11,7 +11,15 @@
     "verify:source-parity": "node scripts/verify.mjs && node scripts/verify-word-parity.mjs && node scripts/verify-table-data.mjs"
   },
   "dependencies": {
-    "astro": "^5.16.0"
+    "astro": "^5.16.0",
+    "@astrojs/react": "^4.4.2",
+    "@tailwindcss/vite": "^4.1.14",
+    "@tailwindcss/typography": "^0.5.19",
+    "tailwindcss": "^4.1.14",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "motion": "^12.23.24",
+    "lucide-react": "^0.546.0"
   },
   "devDependencies": {}
 }
