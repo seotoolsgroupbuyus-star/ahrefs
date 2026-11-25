@@ -98,14 +98,15 @@ function toolDomain(name: string) {
   return null;
 }
 
-function ToolLogo({ name }: { name: string }) {
+function ToolLogo({ name, logo }: { name: string; logo?: string }) {
   const [failed, setFailed] = useState(false);
   const key = toolLogoKey(name);
   const localLogos = new Set(["ahrefs", "semrush", "canva", "grammarly", "moz", "spyfu", "ubersuggest", "envato"]);
   // Never request a third-party favicon for catalog items. Browser/CSP/network
   // restrictions can show a broken-image box before onError fires.
   // Unknown brands get a clean text mark until an original logo is uploaded.
-  const src = localLogos.has(key) ? `/logos/${key}.svg` : "";
+  const configuredLogo = logo || site.tools.find(item=>item.name.toLowerCase()===name.toLowerCase())?.logo;
+  const src = configuredLogo || (localLogos.has(key) ? `/logos/${key}.svg` : "");
   if (failed || !src) {
     const initials = name.split(/\s+/).filter(Boolean).slice(0, 2).map(part => part[0]?.toUpperCase()).join("") || name.slice(0, 2).toUpperCase();
     return <span aria-label={`${name} logo`} role="img" className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-sm font-black text-[#1A284D]">{initials}</span>;
@@ -433,7 +434,7 @@ function RefPricing() {
                           currency === "pkr" ? plan.yearlyUsdPerMonth * PKR_RATE : plan.yearlyUsdPerMonth,
                           currency
                         )}
-                        /mo · 20% off vs monthly
+                        /mo · {site.uiLabels.yearlySavingsLabel}
                       </p>
                     )}
                   </div>
@@ -466,7 +467,7 @@ function RefPricing() {
                                 </div>
                                 {plan.tools.length > 20 && (
                                   <div className="mt-2 border-t border-slate-200 pt-2 text-[10px] font-black uppercase tracking-widest text-slate-500">
-                                    +{plan.tools.length - 20} more tools
+                                    +{plan.tools.length - 20} {site.uiLabels.moreToolsLabel}
                                   </div>
                                 )}
                               </div>
@@ -477,7 +478,7 @@ function RefPricing() {
                             title={f}
                             body={
                               FEATURE_INFO[f] ??
-                              "More details for this feature are included in the plan limits and comparison."
+                              site.uiLabels.featureTooltipFallback
                             }
                           />
                         )}
@@ -692,7 +693,7 @@ function WhyChooseShared() {
             <div className="mb-10 flex h-16 w-16 items-center justify-center rounded-2xl bg-red-50 text-red-500">
               <X className="h-8 w-8" />
             </div>
-            <h3 className="mb-8 text-4xl font-black text-[#1A284D]">The Problem</h3>
+            <h3 className="mb-8 text-4xl font-black text-[#1A284D]">{site.homeCopy.problemTitle}</h3>
             <ul className="space-y-6">
               {problemBullets.map((item) => (
                 <li key={item} className="flex items-center gap-4 text-xl font-bold text-gray-600">
@@ -716,7 +717,7 @@ function WhyChooseShared() {
               <div className="mb-10 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/20 text-white">
                 <Check className="h-8 w-8" />
               </div>
-              <h3 className="mb-8 text-4xl font-black">The Solution</h3>
+              <h3 className="mb-8 text-4xl font-black">{site.homeCopy.solutionTitle}</h3>
               <ul className="space-y-6">
                 {solutionBullets.map((item) => (
                   <li key={item} className="flex items-center gap-4 text-xl font-bold">
@@ -764,7 +765,7 @@ function ToolsIncluded({ onOpenTools }: { onOpenTools: () => void }) {
               )}
             >
               <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-white shadow-sm">
-                <ToolLogo name={tool.name} />
+                <ToolLogo name={tool.name} logo={tool.logo} />
               </div>
               <h4 className="mb-1 text-2xl font-black text-[#1A284D]">{tool.name}</h4>
               <p className="text-sm font-bold uppercase tracking-widest text-gray-400">{site.homeCopy.toolBadge}</p>
@@ -817,14 +818,14 @@ function ToolsModal({
           >
             <div className="flex items-center justify-between border-b border-slate-100 p-8">
               <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">Included tools</p>
-                <h3 className="mt-2 text-2xl font-black text-[#1A284D]">20+ Premium SEO Tools</h3>
+                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">{site.uiLabels.allToolsDescription}</p>
+                <h3 className="mt-2 text-2xl font-black text-[#1A284D]">{site.uiLabels.allToolsTitle}</h3>
               </div>
               <button
                 type="button"
                 onClick={onClose}
                 className="rounded-full p-2 transition-colors hover:bg-slate-100"
-                aria-label="Close"
+                aria-label={site.uiLabels.closeModal}
               >
                 <X className="h-6 w-6 text-slate-400" />
               </button>
@@ -836,7 +837,7 @@ function ToolsModal({
                 <input
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search tools..."
+                  placeholder={site.uiLabels.toolsSearchPlaceholder}
                   className="w-full bg-transparent text-sm font-bold text-[#1A284D] outline-none placeholder:text-slate-400"
                 />
               </div>
@@ -970,24 +971,7 @@ function ComparisonSection() {
 }
 
 function AhrefsBarFeatures() {
-  const features = [
-    {
-      title: "SERP Overview",
-      desc: "Get DR, UR, and Backlink counts directly on Google search results.",
-    },
-    {
-      title: "Domain Metrics",
-      desc: "Check any website's strength without leaving the page.",
-    },
-    {
-      title: "Keyword Difficulty",
-      desc: "Instantly see how hard it is to rank for any search term.",
-    },
-    {
-      title: "Quick Analysis",
-      desc: "One-click access to full Site Explorer reports.",
-    },
-  ];
+  const features = site.extensionFeatures;
   return (
     <section className="relative flex items-center overflow-hidden bg-blue-600 py-24 text-white" id="toolbar">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -1004,7 +988,7 @@ function AhrefsBarFeatures() {
             viewport={viewOnce}
           >
             <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-blue-100">
-              <ShieldCheck className="h-4 w-4" /> Exclusive Extension Access
+              <ShieldCheck className="h-4 w-4" /> {site.homeCopy.extensionEyebrow}
             </div>
             <h2 className="mb-8 text-5xl font-black leading-[1.1] md:text-6xl">
               {site.homeCopy.extensionTitle}
@@ -1020,7 +1004,7 @@ function AhrefsBarFeatures() {
                     <CheckCircle2 className="h-6 w-6 text-blue-300" />
                   </div>
                   <h4 className="mb-3 text-xl font-bold">{f.title}</h4>
-                  <p className="text-sm leading-relaxed text-blue-100/70">{f.desc}</p>
+                  <p className="text-sm leading-relaxed text-blue-100/70">{f.description}</p>
                 </div>
               ))}
             </div>
@@ -1156,8 +1140,8 @@ function LimitationsSection() {
           transition={{ duration: 0.55 }}
         >
           <div className="text-center md:text-left">
-            <h4 className="mb-2 text-2xl font-black">Still have questions?</h4>
-            <p className="font-medium text-blue-100">Our support team is ready to help you 24/7.</p>
+            <h4 className="mb-2 text-2xl font-black">{site.uiLabels.limitationsQuestion}</h4>
+            <p className="font-medium text-blue-100">{site.uiLabels.limitationsSupportText}</p>
           </div>
           <motion.a
             href={SITE_CONFIG.whatsappUrl}
@@ -1197,7 +1181,7 @@ function TrustpilotReviews() {
             </p>
             <div className="mt-4 flex items-center justify-center gap-2 md:justify-start">
               <Star className="h-5 w-5 fill-current text-[#00b67a]" />
-              <span className="text-lg font-bold tracking-tight">Trustpilot</span>
+              <span className="text-lg font-bold tracking-tight">{site.uiLabels.reviewPlatformLabel}</span>
             </div>
           </div>
           <motion.button
@@ -1205,7 +1189,7 @@ function TrustpilotReviews() {
             whileTap={{ scale: 0.97 }}
             className="rounded-xl border border-gray-100 bg-gray-50 px-8 py-4 font-bold text-[#1A284D] transition-all hover:bg-gray-100"
           >
-            Write a review
+            {site.uiLabels.writeReviewLabel}
           </motion.button>
         </motion.div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
