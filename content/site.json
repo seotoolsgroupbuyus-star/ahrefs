@@ -653,7 +653,9 @@
     "featureTooltipFallback": "More details for this feature are included in the plan limits and comparison.",
     "heroTitlePrefix": "Ahrefs Group Buy – Get Premium Access",
     "detectedCountryLabel": "Detected:",
-    "articleAsideUrl": "/#pricing"
+    "articleAsideUrl": "/#pricing",
+    "homeNavLabel": "Home",
+    "closeMenu": "Close menu"
   },
   "seoKeywords": [
     "Ahrefs group buy",
