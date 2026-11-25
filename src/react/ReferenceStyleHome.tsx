@@ -167,7 +167,7 @@ function TopHero() {
             </div>
 
             <h1 className="mb-8 text-5xl font-black leading-none tracking-tighter md:text-8xl">
-              {site.heroTitle.slice(0,site.heroTitle.toLowerCase().lastIndexOf('at 90% off')) || 'Ahrefs Group Buy – Get Premium Access'}{" "}
+              {site.heroTitle.slice(0,site.heroTitle.toLowerCase().lastIndexOf('at 90% off')) || site.uiLabels.heroTitlePrefix}{" "}
               <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
                 {site.uiLabels.heroTitleAccent}
               </span>
@@ -385,7 +385,7 @@ function RefPricing() {
                 </div>
                 {detectedCountry && (
                   <p className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                    <Globe className="h-3 w-3" /> Detected: {detectedCountry}
+                    <Globe className="h-3 w-3" /> {site.uiLabels.detectedCountryLabel} {detectedCountry}
                   </p>
                 )}
               </div>
@@ -1184,13 +1184,15 @@ function TrustpilotReviews() {
               <span className="text-lg font-bold tracking-tight">{site.uiLabels.reviewPlatformLabel}</span>
             </div>
           </div>
-          <motion.button
-            type="button"
+          <motion.a
+            href={site.uiLabels.writeReviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             whileTap={{ scale: 0.97 }}
             className="rounded-xl border border-gray-100 bg-gray-50 px-8 py-4 font-bold text-[#1A284D] transition-all hover:bg-gray-100"
           >
             {site.uiLabels.writeReviewLabel}
-          </motion.button>
+          </motion.a>
         </motion.div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {REVIEW_ITEMS.map((r, i) => (
