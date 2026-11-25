@@ -361,8 +361,7 @@ function RefPricing() {
               {site.homeCopy.pricingEyebrow} {site.homeCopy.pricingTitle}
             </h2>
             <p className="mx-auto mb-12 max-w-2xl text-lg text-slate-500">
-              Choose the perfect plan for your SEO needs. From individual bloggers to large agencies, we&apos;ve got
-              you covered.
+              {site.homeCopy.pricingLead}
             </p>
 
             <div className="mb-12 flex flex-wrap items-center justify-center gap-4">
@@ -562,8 +561,8 @@ function RefPricing() {
               {COUPON_CODE}
             </div>
             <div className="text-center md:text-left">
-              <p className="mb-1 text-[10px] font-black uppercase tracking-[0.3em] text-[#FF5C00]">Limited Time Offer</p>
-              <p className="text-sm font-black text-[#1A284D]">Get extra 20% off on your first month</p>
+              <p className="mb-1 text-[10px] font-black uppercase tracking-[0.3em] text-[#FF5C00]">{site.homeCopy.offerLabel}</p>
+              <p className="text-sm font-black text-[#1A284D]">{site.homeCopy.offerText}</p>
             </div>
             <motion.button
               type="button"
@@ -714,7 +713,7 @@ function WhyChooseShared() {
           >
             <h2 className="mb-6 text-4xl font-black tracking-tight text-[#1A284D] md:text-6xl">{site.homeCopy.whyTitle}</h2>
             <p className="mx-auto max-w-2xl text-xl font-medium text-gray-500">
-              Traditional tool subscriptions are designed for big agencies. We make them accessible for everyone.
+              {site.homeCopy.whyDescription}
             </p>
           </motion.div>
         </div>
@@ -784,7 +783,7 @@ function ToolsIncluded({ onOpenTools }: { onOpenTools: () => void }) {
             {site.homeCopy.toolsTitle}
           </h2>
           <p className="mx-auto max-w-2xl text-xl font-medium text-gray-500">
-            Everything you need for SEO, Content, and Design in one place.
+            {site.homeCopy.toolsDescription}
           </p>
         </motion.div>
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
@@ -995,9 +994,9 @@ function ComparisonSection() {
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 bg-white px-6 py-4 text-xs font-bold text-slate-500">
-            <span>Tip: Use this table to match the plan to your budget and workflow.</span>
+            <span>{site.homeCopy.comparisonHint}</span>
             <a href="#pricing" className="font-black uppercase tracking-widest text-[#FF5C00] hover:underline">
-              See pricing
+              {site.uiLabels.seePricing}
             </a>
           </div>
         </div>
@@ -1047,8 +1046,7 @@ function AhrefsBarFeatures() {
               {site.homeCopy.extensionTitle}
             </h2>
             <p className="mb-12 max-w-xl text-xl leading-relaxed text-blue-100 opacity-90">
-              Stop switching tabs. Get critical SEO metrics like Domain Rating, URL Rating, and Backlink counts directly
-              on Google SERPs and any website you visit.
+              {site.homeCopy.extensionDescription}
             </p>
 
             <div className="grid gap-10 sm:grid-cols-2">
@@ -1164,8 +1162,7 @@ function LimitationsSection() {
             Transparent Limitations We Keep it Honest
           </h2>
           <p className="text-xl font-medium leading-relaxed text-blue-100/70">
-            We believe in being 100% honest with our users. To maintain the highest stability and lowest prices, we have
-            a few common-sense rules.
+            {site.homeCopy.limitationsDescription}
           </p>
         </motion.div>
         <div className="grid gap-8 md:grid-cols-2">
@@ -1225,7 +1222,7 @@ function TrustpilotReviews() {
           transition={{ duration: 0.5 }}
         >
           <div className="text-center md:text-left">
-            <h2 className="mb-4 text-4xl font-black text-[#1A284D]">Success Stories: What Our Users Say About Us</h2>
+            <h2 className="mb-4 text-4xl font-black text-[#1A284D]">{site.homeCopy.reviewsEyebrow}: {site.homeCopy.reviewsTitle}</h2>
             <div className="mb-2 flex items-center justify-center gap-1 md:justify-start">
               {[1, 2, 3, 4, 5].map((i) => (
                 <div key={i} className="tp-star" />
@@ -1296,7 +1293,7 @@ function RefFAQ() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="mb-4 text-4xl font-black text-[#1A284D]">{site.homeCopy.faqTitle}</h2>
-          <p className="font-medium text-gray-500">Everything you need to know about our Ahrefs access.</p>
+          <p className="font-medium text-gray-500">{site.homeCopy.faqLead}</p>
         </motion.div>
         <div className="grid gap-4">
           {FAQ_ITEMS.map((faq, i) => (
