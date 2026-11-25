@@ -580,7 +580,7 @@
     "articleAsideTitle": "Explore your options",
     "articleAsideDescription": "Compare plans, features and usage restrictions before deciding.",
     "articleAsideButton": "View pricing",
-    "relatedReadingTitle": "Related reading",
+    "relatedReadingTitle": "Related articles",
     "headerButton": "Get Started",
     "footerSupportLabel": "WhatsApp Support",
     "viewAllTools": "View all 25+ tools",
@@ -638,7 +638,11 @@
     "authorWrittenBy": "Written by:",
     "toolsSearchPlaceholder": "Search tools...",
     "seePricing": "See pricing",
-    "heroTitleAccent": "at 90% Off"
+    "heroTitleAccent": "at 90% Off",
+    "articleCtaTitle": "Ready to Start?",
+    "articleCtaLead": "Get instant access to Ahrefs tools and start dominating your niche today.",
+    "articleCtaButton": "View Pricing & Plans",
+    "articleCtaTrust": "Secure Checkout • Instant Setup"
   },
   "seoKeywords": [
     "Ahrefs group buy",
